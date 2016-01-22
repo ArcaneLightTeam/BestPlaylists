@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C876CA10-47DF-44EB-A037-FD63C9FA68BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestPlaylists.Data", "Data\BestPlaylists..Data\BestPlaylists.Data.csproj", "{292B6628-C1BD-4F14-B5EA-AC06FB53296C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestPlaylists.Data.Models", "Data\BestPlaylists..Data.Models\BestPlaylists.Data.Models.csproj", "{74C0976C-F6CE-4D7D-A997-9D218CD18028}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5CF3E066-5B71-499A-A6B1-0134033A95FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestPlaylists.Services.Data", "Services\BestPlaylists.Services.Data\BestPlaylists.Services.Data.csproj", "{621AE641-ED5F-4C3B-A0FA-556BA9544675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestPlaylists.WebForms", "BestPlaylists.WebForms\BestPlaylists.WebForms.csproj", "{E0C3D26A-1271-43D4-A392-ACFB36C05F60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{292B6628-C1BD-4F14-B5EA-AC06FB53296C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292B6628-C1BD-4F14-B5EA-AC06FB53296C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{292B6628-C1BD-4F14-B5EA-AC06FB53296C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292B6628-C1BD-4F14-B5EA-AC06FB53296C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C0976C-F6CE-4D7D-A997-9D218CD18028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C0976C-F6CE-4D7D-A997-9D218CD18028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C0976C-F6CE-4D7D-A997-9D218CD18028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C0976C-F6CE-4D7D-A997-9D218CD18028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{621AE641-ED5F-4C3B-A0FA-556BA9544675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{621AE641-ED5F-4C3B-A0FA-556BA9544675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{621AE641-ED5F-4C3B-A0FA-556BA9544675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{621AE641-ED5F-4C3B-A0FA-556BA9544675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0C3D26A-1271-43D4-A392-ACFB36C05F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0C3D26A-1271-43D4-A392-ACFB36C05F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0C3D26A-1271-43D4-A392-ACFB36C05F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0C3D26A-1271-43D4-A392-ACFB36C05F60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{292B6628-C1BD-4F14-B5EA-AC06FB53296C} = {C876CA10-47DF-44EB-A037-FD63C9FA68BD}
+		{74C0976C-F6CE-4D7D-A997-9D218CD18028} = {C876CA10-47DF-44EB-A037-FD63C9FA68BD}
+		{621AE641-ED5F-4C3B-A0FA-556BA9544675} = {5CF3E066-5B71-499A-A6B1-0134033A95FC}
+	EndGlobalSection
+EndGlobal
