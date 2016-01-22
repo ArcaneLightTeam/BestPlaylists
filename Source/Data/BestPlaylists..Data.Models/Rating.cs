@@ -4,6 +4,8 @@
 
     public class Rating
     {
+        [Required]
+        [Key]
         public int Id { get; set; }
 
         public string UserId { get; set; }

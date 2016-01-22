@@ -12,7 +12,7 @@
 
         IQueryable<Playlist> GetByCategory(string categoryName);
 
-        int Add(string title, string description, int categoryId, int userId, string imageUrl, bool isPrivate);
+        int Add(string title, string description, int categoryId, string userId, bool isPrivate);
         
         void Update(Playlist playlist);
 

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Playlist
     {
@@ -18,6 +19,8 @@
             this.ratings = new HashSet<Rating>();
         }
 
+        [Required]
+        [Key]
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -28,16 +31,18 @@
 
         public bool IsRemoved { get; set; }
 
+        public bool IsPrivate { get; set; }
+
+        public double CurrentRating { get; set; }
+
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public virtual User User { get; set; }
-
-        public bool IsPrivate { get; set; }
-
+      
         public virtual ICollection<Comment> Comments
         {
             get

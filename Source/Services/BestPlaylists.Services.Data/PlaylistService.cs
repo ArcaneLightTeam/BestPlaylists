@@ -12,18 +12,18 @@
         private readonly IRepository<Playlist> playlistRepo;
         private readonly IRepository<User> usersRepo;
 
-        public PlaylistService(IRepository<BestPlaylists.Data.Models.Playlist> playlistRepo, IRepository<User> usersRepo)
+        public PlaylistService(IRepository<Playlist> playlistRepo, IRepository<User> usersRepo)
         {
             this.playlistRepo = playlistRepo;
             this.usersRepo = usersRepo;
         }
 
-        public IQueryable<BestPlaylists.Data.Models.Playlist> GetById(int id)
+        public IQueryable<Playlist> GetById(int id)
         {
             return this.playlistRepo.All().Where(pr => pr.Id == id);
         }
 
-        public IQueryable<BestPlaylists.Data.Models.Playlist> GetByCategory(string categoryName)
+        public IQueryable<Playlist> GetByCategory(string categoryName)
         {
             return
                 this.playlistRepo.All()
@@ -39,7 +39,7 @@
         }
 
 
-        public int Add(string title, string description, int categoryId, int userId, string imageUrl, bool isPrivate)
+        public int Add(string title, string description, int categoryId, string userId, bool isPrivate)
         {
             var playlistToAdd = new Playlist
             {

@@ -10,6 +10,8 @@ namespace BestPlaylists.WebForms
 
     using BestPlaylists.Data;
     using BestPlaylists.Data.Repositories;
+    using BestPlaylists.Services.Data;
+    using BestPlaylists.Services.Data.Contracts;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -69,7 +71,7 @@ namespace BestPlaylists.WebForms
         {
             kernel.Bind<IBestPlaylistsDbContext>().To<BestPlaylistsDbContext>().InRequestScope();
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
-            kernel.Bind(b => b.From("PayItForward.Services.Data").SelectAllClasses().BindDefaultInterface());
+            kernel.Bind(b => b.From("BestPlaylists.Services.Data").SelectAllClasses().BindDefaultInterface());
         }        
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace BestPlaylists.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Category
     {
@@ -11,6 +12,8 @@
             this.playlists = new HashSet<Playlist>();
         }
 
+        [Required]
+        [Key]
         public int Id { get; set; }
 
         public bool IsRemoved { get; set; }

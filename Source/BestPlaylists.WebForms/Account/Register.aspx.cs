@@ -8,6 +8,7 @@
     using BestPlaylists.Data.Models;
     using BestPlaylists.WebForms.Helpers;
 
+    using Microsoft.Ajax.Utilities;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
 
@@ -19,14 +20,15 @@
             var signInManager = this.Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new User()
             {
-                UserName = this.UserName.Text,
-                Email = this.Email.Text,
-                FirstName = this.FirstName.Text,
-                LastName = this.LastName.Text,
-                FacebookAccount = this.FacebookAccount.Text,
-                YouTubeAccount = this.YouTubeAccount.Text,
-                AvatarUrl = this.AvatarUrl.Text
+                UserName = this.UserName?.Text,
+                Email = this.Email?.Text,
+                FirstName = this.FirstName?.Text,
+                LastName = this.LastName?.Text,
+                FacebookAccount = string.IsNullOrWhiteSpace(this.FacebookAccount?.Text) ? null : this.FacebookAccount.Text,
+                YouTubeAccount = string.IsNullOrWhiteSpace(this.YouTubeAccount?.Text) ? null : this.YouTubeAccount.Text,
+                AvatarUrl = string.IsNullOrWhiteSpace(this.AvatarUrl?.Text) ? null : this.AvatarUrl.Text,
             };
+
             IdentityResult result = manager.Create(user, this.Password.Text);
             if (result.Succeeded)
             {
