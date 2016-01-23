@@ -6,7 +6,6 @@
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using BestPlaylists.Services.Data.Contracts;
-    using Models;
     using Ninject;
 
     public partial class Home : Page
@@ -16,30 +15,21 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // CONTSANTS - when common class library exist
+            // TODO:CONTSANTS - when common class library exist
             // expires, playlists, 10 for playlist count and 
             object expires = this.Cache["expires"];
 
             if (expires != null && DateTime.Parse(expires.ToString()) > DateTime.Now)
             {
-                this.gridTopPLaylists.DataSource = this.Cache["playlists"] as IList<PlaylistResponseModel>;
+                this.gridTopPLaylists.DataSource = this.Cache["playlists"] as IList<Data.Models.Playlist>;
                 this.gridTopPLaylists.DataBind();
                 return;
             }
 
-            IList<PlaylistResponseModel> topPlaylists =
+            IList<Data.Models.Playlist> topPlaylists =
                 Playlists.GetAll()
                 .OrderByDescending(p => p.Ratings.Average(c => c.Value))
                 .Take(10)
-                .Select(p => new PlaylistResponseModel
-                {
-                    Title = p.Title,
-                    Description = p.Description,
-                    Rating = p.Ratings.Average(c => c.Value),
-                    Category = p.Category.Name,
-                    Username = p.User.UserName,
-                    Date = p.CreationDate
-                })
                 .ToList();
 
             this.Cache["playlists"] = topPlaylists;
