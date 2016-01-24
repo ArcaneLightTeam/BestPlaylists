@@ -32,7 +32,42 @@ input[type="select"] {
     .jumbotron {
         margin-top: 20px;
     }
+
     .body-content {
         padding: 0;
     }
+}
+
+.playlists .paging td {
+    text-align: center;
+}
+
+.playlists .paging td table {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.playlists .paging a,
+.playlists .paging span {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.playlists .paging a {
+    background: #000000;
+    color: #fff;
+}
+
+.playlists .paging a:hover {
+    background: red;
+}
+
+.playlists .paging span {
+    background: #708090;
+    color: #000;
 }

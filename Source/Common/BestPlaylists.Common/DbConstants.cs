@@ -2,7 +2,7 @@
 
 namespace BestPlaylists.Common
 {
-    public static class GlobalConstants
+    public static class DbConstants
     {
         public const string Admin1Name = "Deyan";
         public const string Admin1FirstName = "Deyan";

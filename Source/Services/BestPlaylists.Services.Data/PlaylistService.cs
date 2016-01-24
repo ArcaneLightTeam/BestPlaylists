@@ -34,10 +34,10 @@
 
         public IQueryable<Playlist> GetAll()
         {
-            return this.playlistRepo.All().Where(x => (!x.IsRemoved)).OrderByDescending(c => c.Title);
-
+            return this.playlistRepo.All()
+                .Where(x => (!x.IsRemoved))
+                .OrderByDescending(c => c.Title);
         }
-
 
         public int Add(string title, string description, int categoryId, string userId, bool isPrivate)
         {

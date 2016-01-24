@@ -32,11 +32,11 @@ namespace BestPlaylists.Data.Migrations
         {
             if (!context.Categories.Any())
             {
-                for (int i = 0; i < GlobalConstants.musicGenres.Count; i++)
+                for (int i = 0; i < DbConstants.musicGenres.Count; i++)
                 {
                     var category = new Category()
                     {
-                        Name = GlobalConstants.musicGenres[i]
+                        Name = DbConstants.musicGenres[i]
                     };
 
                     context.Categories.Add(category);
@@ -54,21 +54,21 @@ namespace BestPlaylists.Data.Migrations
             var store = new RoleStore<IdentityRole>(context);
             var manager = new RoleManager<IdentityRole>(store);
 
-            if (!context.Roles.Any(r => r.Name == GlobalConstants.RoleAdmin))
+            if (!context.Roles.Any(r => r.Name == DbConstants.RoleAdmin))
             {
                 var roleAdmin = new IdentityRole
                 {
-                    Name = GlobalConstants.RoleAdmin
+                    Name = DbConstants.RoleAdmin
                 };
 
                 manager.Create(roleAdmin);
             }
 
-            if (!context.Roles.Any(r => r.Name == GlobalConstants.RoleEditor))
+            if (!context.Roles.Any(r => r.Name == DbConstants.RoleEditor))
             {
                 var roleEditor = new IdentityRole()
                 {
-                    Name = GlobalConstants.RoleEditor
+                    Name = DbConstants.RoleEditor
                 };
 
                 manager.Create(roleEditor);
@@ -80,39 +80,39 @@ namespace BestPlaylists.Data.Migrations
             var store = new UserStore<User>(context);
             var manager = new UserManager<User>(store);
 
-            if (!context.Users.Any(u => u.UserName == GlobalConstants.Admin1Name))
+            if (!context.Users.Any(u => u.UserName == DbConstants.Admin1Name))
             {
                 var user = new User()
                 {
-                    UserName = GlobalConstants.Admin1Name,
-                    Email = GlobalConstants.Admin1Email,
-                    FirstName = GlobalConstants.Admin1FirstName,
-                    LastName = GlobalConstants.Admin1LastName
+                    UserName = DbConstants.Admin1Name,
+                    Email = DbConstants.Admin1Email,
+                    FirstName = DbConstants.Admin1FirstName,
+                    LastName = DbConstants.Admin1LastName
                 };
 
-                manager.Create(user, GlobalConstants.Admin1Pass);
-                manager.AddToRole(user.Id, GlobalConstants.RoleAdmin);
+                manager.Create(user, DbConstants.Admin1Pass);
+                manager.AddToRole(user.Id, DbConstants.RoleAdmin);
             }
 
-            if (!context.Users.Any(u => u.UserName == GlobalConstants.Editor1Name))
+            if (!context.Users.Any(u => u.UserName == DbConstants.Editor1Name))
             {
                 var user = new User()
                 {
-                    UserName = GlobalConstants.Editor1Name,
-                    Email = GlobalConstants.Editor1Email,
-                    FirstName = GlobalConstants.Editor1FirstName,
-                    LastName = GlobalConstants.Editor1LastName
+                    UserName = DbConstants.Editor1Name,
+                    Email = DbConstants.Editor1Email,
+                    FirstName = DbConstants.Editor1FirstName,
+                    LastName = DbConstants.Editor1LastName
                 };
 
-                manager.Create(user, GlobalConstants.Editor1Pass);
-                manager.AddToRole(user.Id, GlobalConstants.RoleEditor);
+                manager.Create(user, DbConstants.Editor1Pass);
+                manager.AddToRole(user.Id, DbConstants.RoleEditor);
             }
         }
 
         private void SeedPlaylists(BestPlaylistsDbContext context)
         {
             var categoriesCount = context.Categories.Count();
-            var admin1Id = context.Users.Single(u => u.UserName == GlobalConstants.Admin1Name).Id;
+            var admin1Id = context.Users.Single(u => u.UserName == DbConstants.Admin1Name).Id;
 
             if (!context.Playlists.Any())
             {
