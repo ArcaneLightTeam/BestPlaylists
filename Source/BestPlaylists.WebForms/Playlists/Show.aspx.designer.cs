@@ -13,22 +13,13 @@ namespace BestPlaylists.WebForms.Playlists {
     public partial class Show {
         
         /// <summary>
-        /// btnSortByDate control.
+        /// ddlCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSortByDate;
-        
-        /// <summary>
-        /// btnSortByRating control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSortByRating;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
         /// playlistsGrid control.

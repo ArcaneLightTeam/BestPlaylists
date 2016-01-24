@@ -8,16 +8,18 @@
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div class="playlists">
         <h1 class="title">All Playlists</h1>
-        
+
         <div class="row">
-            <div class="col-md-3">
-                <asp:LinkButton runat="server" ID="btnSortByDate" CssClass="btn btn-default" Text="Sort by Date" CommandArgument="DateCreated" CommandName="Sort" />
+            <div class="form-group col-md-12">
+                <label for="">Select Category</label>
+                <asp:DropDownList runat="server"
+                    ID="ddlCategory"
+                    OnSelectedIndexChanged="CategoryChanged"
+                    AutoPostBack="True"
+                    AppendDataBoundItems="True" CssClass="form-control">
+                    <asp:ListItem Text="All Categories" Value="-1" />
+                </asp:DropDownList>
             </div>
-            <div class="col-md-3">
-                <asp:LinkButton runat="server" ID="btnSortByRating" CssClass="btn btn-default" Text="Sort by Rating" CommandArgument="Rating" CommandName="Sort" />
-            </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3"></div>
         </div>
 
         <asp:GridView runat="server"
@@ -29,50 +31,35 @@
             AllowPaging="True" PageSize="10"
             AutoGenerateColumns="False"
             CssClass="table table-bordered">
-            
+
             <PagerStyle CssClass="paging" />
 
             <Columns>
-                <asp:TemplateField>
-                    <HeaderTemplate>
-                        Title
-                    </HeaderTemplate>
+                <asp:TemplateField HeaderText="Title" SortExpression="Title">
                     <ItemTemplate>
                         <%#: Item.Title.Length > 30 ? Item.Title.Substring(0,30) + "..." : Item.Title %>
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField>
-                    <HeaderTemplate>
-                        Description
-                    </HeaderTemplate>
+                <asp:TemplateField HeaderText="Description">
                     <ItemTemplate>
                         <%#: Item.Description.Length > 30 ? Item.Description.Substring(0, 30) + "..." : Item.Description %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                
-                <asp:TemplateField>
-                    <HeaderTemplate>
-                        Category
-                    </HeaderTemplate>
+
+                <asp:TemplateField HeaderText="Category">
                     <ItemTemplate>
                         <%#: Item.Category.Name %>
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField>
-                    <HeaderTemplate>
-                        Creation Data
-                    </HeaderTemplate>
+                <asp:TemplateField HeaderText="Creation Data" SortExpression="CreationDate">
                     <ItemTemplate>
                         <%#: Item.CreationDate.ToString("d") %>
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField>
-                    <HeaderTemplate>
-                        Rating
-                    </HeaderTemplate>
+                <asp:TemplateField HeaderText="Rating" SortExpression="CurrentRating">
                     <ItemTemplate>
                         <%#: Item.CurrentRating %>
                     </ItemTemplate>
