@@ -27,22 +27,6 @@ namespace BestPlaylists.WebForms.Playlists
 
         public IQueryable<Playlist> ListViewPlaylists_GetData()
         {
-            //var playlists = this.Playlists.GetAll();
-            //var selected = 0;
-
-            //if (this.ViewState["Filter"] != null && this.ddlCategory.SelectedValue != "-1")
-            //{
-            //    selected = int.Parse(this.ViewState["Filter"].ToString());
-            //    var filtered = playlists.Where(p => p.CategoryId == selected);
-            //    return filtered;
-            //}
-            //else if (this.ddlCategory.SelectedValue != "-1")
-            //{
-            //    selected = int.Parse(this.ddlCategory.SelectedValue);
-            //    var filtered = playlists.Where(p => p.CategoryId == selected);
-            //    return filtered;
-            //}
-
             var filter = ViewState["Filter"];
 
             if (filter != null && int.Parse(filter.ToString()) != -1)
@@ -67,6 +51,7 @@ namespace BestPlaylists.WebForms.Playlists
 
             ViewState["Filter"] = id;
             ListViewPlaylists_GetData();
+            playlistsGrid.DataBind();
         }
     }
 }

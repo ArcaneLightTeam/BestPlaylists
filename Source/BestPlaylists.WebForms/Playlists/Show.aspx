@@ -18,7 +18,9 @@
                     DataValueField="Id"
                     OnSelectedIndexChanged="CategoryChanged"
                     AutoPostBack="True"
-                    AppendDataBoundItems="True" CssClass="form-control">
+                    AppendDataBoundItems="True" 
+                    CssClass="form-control">
+                    
                     <asp:ListItem Text="All Categories" Value="-1" />
                 </asp:DropDownList>
             </div>
