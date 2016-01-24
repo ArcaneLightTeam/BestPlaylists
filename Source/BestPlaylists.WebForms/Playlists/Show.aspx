@@ -14,6 +14,8 @@
                 <label for="">Select Category</label>
                 <asp:DropDownList runat="server"
                     ID="ddlCategory"
+                    DataTextField="Name"
+                    DataValueField="Id"
                     OnSelectedIndexChanged="CategoryChanged"
                     AutoPostBack="True"
                     AppendDataBoundItems="True" CssClass="form-control">
@@ -37,7 +39,9 @@
             <Columns>
                 <asp:TemplateField HeaderText="Title" SortExpression="Title">
                     <ItemTemplate>
-                        <%#: Item.Title.Length > 30 ? Item.Title.Substring(0,30) + "..." : Item.Title %>
+                        <asp:LinkButton runat="server" ID="btnDetails" on>
+                            <%#: Item.Title.Length > 30 ? Item.Title.Substring(0,30) + "..." : Item.Title %>
+                        </asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -59,12 +63,9 @@
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField HeaderText="Rating" SortExpression="CurrentRating">
-                    <ItemTemplate>
-                        <%#: Item.CurrentRating %>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField HeaderText="Rating" DataField="CurrentRating" SortExpression="CurrentRating" />
             </Columns>
+
         </asp:GridView>
     </div>
 </asp:Content>

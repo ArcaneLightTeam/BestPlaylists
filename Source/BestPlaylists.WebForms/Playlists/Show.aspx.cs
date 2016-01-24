@@ -20,45 +20,53 @@ namespace BestPlaylists.WebForms.Playlists
         {
             if (!Page.IsPostBack)
             {
-                var allCategories = this.Categories.GetAll();
-
-                foreach (var allCategory in allCategories)
-                {
-                    ddlCategory.Items.Add(new ListItem()
-                    {
-                        Text = allCategory.Name,
-                        Value = allCategory.Id.ToString()
-                    });
-                }
+                this.ddlCategory.DataSource = this.Categories.GetAll().ToList();
+                this.ddlCategory.DataBind();
             }
         }
 
         public IQueryable<Playlist> ListViewPlaylists_GetData()
         {
-            var playlists = this.Playlists.GetAll();
-            var selected = 0;
+            //var playlists = this.Playlists.GetAll();
+            //var selected = 0;
 
-            if (this.ViewState["Filter"] != null && this.ddlCategory.SelectedValue != "-1")
+            //if (this.ViewState["Filter"] != null && this.ddlCategory.SelectedValue != "-1")
+            //{
+            //    selected = int.Parse(this.ViewState["Filter"].ToString());
+            //    var filtered = playlists.Where(p => p.CategoryId == selected);
+            //    return filtered;
+            //}
+            //else if (this.ddlCategory.SelectedValue != "-1")
+            //{
+            //    selected = int.Parse(this.ddlCategory.SelectedValue);
+            //    var filtered = playlists.Where(p => p.CategoryId == selected);
+            //    return filtered;
+            //}
+
+            var filter = ViewState["Filter"];
+
+            if (filter != null && int.Parse(filter.ToString()) != -1)
             {
-                selected = int.Parse(this.ViewState["Filter"].ToString());
-                var filtered = playlists.Where(p => p.CategoryId == selected);
-                return filtered;
-            }
-            else if (this.ddlCategory.SelectedValue != "-1")
-            {
-                selected = int.Parse(this.ddlCategory.SelectedValue);
-                var filtered = playlists.Where(p => p.CategoryId == selected);
-                return filtered;
+                var id = int.Parse(filter.ToString());
+
+                return this.Playlists.GetAll().Where(p => p.CategoryId == id);
             }
 
-            return playlists;
+            return this.Playlists.GetAll();
         }
 
         protected void CategoryChanged(object sender, EventArgs e)
         {
-            DropDownList ddlCountry = (DropDownList)sender;
-            ViewState["Filter"] = ddlCountry.SelectedValue;
-            this.ListViewPlaylists_GetData();
+            var ddl = sender as DropDownList;
+            var id = -1;
+
+            if (ddl != null)
+            {
+                id = int.Parse(ddl.SelectedValue);
+            }
+
+            ViewState["Filter"] = id;
+            ListViewPlaylists_GetData();
         }
     }
 }
