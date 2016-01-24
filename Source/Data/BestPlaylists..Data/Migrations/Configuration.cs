@@ -14,18 +14,12 @@ namespace BestPlaylists.Data.Migrations
 
         protected override void Seed(BestPlaylistsDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            this.SeedUsers(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        private void SeedUsers(BestPlaylistsDbContext context)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

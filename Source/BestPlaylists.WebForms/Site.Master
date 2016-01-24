@@ -13,7 +13,7 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-   <%-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <%-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">--%>
 </head>
 <body>
@@ -53,7 +53,12 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Playlists/Show">Playlists</a></li>
-                        <li><a runat="server" href="~/Playlists/Create">Create Playlist</a></li>
+                        <asp:LoginView runat="server">
+                            <AnonymousTemplate></AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <li><a runat="server" href="~/Playlists/Create">Create Playlist</a></li>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -91,6 +96,6 @@
             </footer>
         </div>
     </form>
-   <%-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>--%>
+    <%-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>--%>
 </body>
 </html>
