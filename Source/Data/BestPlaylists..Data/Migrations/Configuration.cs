@@ -128,7 +128,7 @@ namespace BestPlaylists.Data.Migrations
                         Description = randomGenerator.GetRandomString(ModelsConstats.MinVideoTitleLength, ModelsConstats.MaxVideoDescriptionLength),
                         CreationDate = randomGenerator.GetRandomDate(DateTime.Now.AddYears(-i), DateTime.Now),
                         IsPrivate = (i % 2 == 0),
-                        CurrentRating = randomGenerator.GetRandomNumber(i, 100) / 2,
+                        CurrentRating = randomGenerator.GetRandomNumber(1, 5) % 6,
                         CategoryId = randomGenerator.GetRandomNumber(1, categoriesCount),
                         UserId = admin1Id,
                     };
