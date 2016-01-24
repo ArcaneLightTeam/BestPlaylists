@@ -8,6 +8,17 @@
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div class="playlists">
         <h1 class="title">All Playlists</h1>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <asp:LinkButton runat="server" ID="btnSortByDate" CssClass="btn btn-default" Text="Sort by Date" CommandArgument="DateCreated" CommandName="Sort" />
+            </div>
+            <div class="col-md-3">
+                <asp:LinkButton runat="server" ID="btnSortByRating" CssClass="btn btn-default" Text="Sort by Rating" CommandArgument="Rating" CommandName="Sort" />
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
 
         <asp:GridView runat="server"
             ID="playlistsGrid"
