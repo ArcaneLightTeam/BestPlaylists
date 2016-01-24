@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using BestPlaylists.Common;
 using BestPlaylists.Data.Models;
@@ -23,6 +25,7 @@ namespace BestPlaylists.Data.Migrations
             this.SeedCategories(context);
             this.SeedRoles(context);
             this.SeedUsers(context);
+            this.SeedPlaylists(context);
         }
 
         private void SeedCategories(BestPlaylistsDbContext context)
@@ -103,6 +106,58 @@ namespace BestPlaylists.Data.Migrations
 
                 manager.Create(user, GlobalConstants.Editor1Pass);
                 manager.AddToRole(user.Id, GlobalConstants.RoleEditor);
+            }
+        }
+
+        private void SeedPlaylists(BestPlaylistsDbContext context)
+        {
+            var categoriesCount = context.Categories.Count();
+            var admin1Id = context.Users.Single(u => u.UserName == GlobalConstants.Admin1Name).Id;
+
+            if (!context.Playlists.Any())
+            {
+                var randomGenerator = new RandomGenerator();
+
+                for (int i = 0; i < 100; i++)
+                {
+                    var videos = new List<Video>();
+
+                    var playlist = new Playlist()
+                    {
+                        Title = randomGenerator.GetRandomString(ModelsConstats.MinVideoTitleLength, ModelsConstats.MaxVideoTitleLength),
+                        Description = randomGenerator.GetRandomString(ModelsConstats.MinVideoTitleLength, ModelsConstats.MaxVideoDescriptionLength),
+                        CreationDate = randomGenerator.GetRandomDate(DateTime.Now.AddYears(-i), DateTime.Now),
+                        IsPrivate = (i % 2 == 0),
+                        CurrentRating = randomGenerator.GetRandomNumber(i, 100) / 2,
+                        CategoryId = randomGenerator.GetRandomNumber(1, categoriesCount),
+                        UserId = admin1Id,
+                    };
+
+                    context.Playlists.Add(playlist);
+
+                    if (i % 10 == 0)
+                    {
+                        context.SaveChanges();
+                    }
+                }
+
+                var playlistsCount = context.Playlists.Count();
+                for (int i = 0; i < playlistsCount; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        var video = new Video()
+                        {
+                            PlaylistId = i + 1,
+                            Url = "url",
+                            UserId = admin1Id
+                        };
+
+                        context.Videos.Add(video);
+                    }
+
+                    context.SaveChanges();
+                }
             }
         }
     }
