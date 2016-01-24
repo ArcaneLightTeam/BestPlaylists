@@ -437,6 +437,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\BestPlaylists.Common\BestPlaylists.Common.csproj">
+      <Project>{3be317e3-c70d-48d9-900a-6a149f75e96d}</Project>
+      <Name>BestPlaylists.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\BestPlaylists..Data.Models\BestPlaylists.Data.Models.csproj">
       <Project>{74c0976c-f6ce-4d7d-a997-9d218cd18028}</Project>
       <Name>BestPlaylists.Data.Models</Name>
