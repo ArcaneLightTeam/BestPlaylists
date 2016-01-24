@@ -31,7 +31,7 @@
 
         public IQueryable<Category> GetAll()
         {
-            return this.categoriesRepo.All().Where(x => (!x.IsRemoved));
+            return this.categoriesRepo.All().Where(c => (!c.IsRemoved)).OrderBy(c => c.Name);
         }
 
         public int Add(string categoryName)
