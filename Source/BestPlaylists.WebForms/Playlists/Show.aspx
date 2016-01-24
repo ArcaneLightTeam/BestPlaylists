@@ -27,7 +27,7 @@
                         Title
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <%#: Item.Title.Length>50 ? Item.Title.Substring(0,50) + "..." : Item.Title %>
+                        <%#: Item.Title.Length > 30 ? Item.Title.Substring(0,30) + "..." : Item.Title %>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -36,7 +36,16 @@
                         Description
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <%#: Item.Description.Length > 50 ? Item.Description.Substring(0,50) + "..." : Item.Description %>
+                        <%#: Item.Description.Length > 30 ? Item.Description.Substring(0, 30) + "..." : Item.Description %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                
+                <asp:TemplateField>
+                    <HeaderTemplate>
+                        Category
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <%#: Item.Category.Name %>
                     </ItemTemplate>
                 </asp:TemplateField>
 
