@@ -1,4 +1,6 @@
-﻿namespace BestPlaylists.Data.Models
+﻿using BestPlaylists.Common;
+
+namespace BestPlaylists.Data.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -12,12 +14,15 @@
             this.playlists = new HashSet<Playlist>();
         }
 
-        [Required]
         [Key]
+        [Required]
         public int Id { get; set; }
 
         public bool IsRemoved { get; set; }
 
+        [Required]
+        [MinLength(ModelsConstats.MinCategoryNameLength, ErrorMessage = ModelsConstats.ErrorTooShort)]
+        [MaxLength(ModelsConstats.MaxCategoryNameLength, ErrorMessage = ModelsConstats.ErrorTooLong)]
         public string Name { get; set; }
 
         public virtual ICollection<Playlist> Playlists

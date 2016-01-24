@@ -1,8 +1,9 @@
-﻿namespace BestPlaylists.Data.Models
+﻿using BestPlaylists.Common;
+
+namespace BestPlaylists.Data.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@
 
         private ICollection<Rating> ratings;
 
-        private ICollection<Playlist> playlists; 
+        private ICollection<Playlist> playlists;
 
         public User()
         {
@@ -25,13 +26,13 @@
         }
 
         [Required]
-        [MaxLength(50)]
-        [MinLength(2)]
+        [MinLength(ModelsConstats.MinFirstNameLength, ErrorMessage = ModelsConstats.ErrorTooShort)]
+        [MaxLength(ModelsConstats.MaxFirstNameLength, ErrorMessage = ModelsConstats.ErrorTooLong)]
         public string FirstName { get; set; }
 
         [Required]
-        [MaxLength(50)]
-        [MinLength(2)]
+        [MinLength(ModelsConstats.MinLastNameLength, ErrorMessage = ModelsConstats.ErrorTooShort)]
+        [MaxLength(ModelsConstats.MaxLastNameLength, ErrorMessage = ModelsConstats.ErrorTooLong)]
         public string LastName { get; set; }
 
         public string AvatarUrl { get; set; }

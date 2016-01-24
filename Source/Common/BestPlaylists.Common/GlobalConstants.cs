@@ -18,7 +18,7 @@ namespace BestPlaylists.Common
 
         public const string RoleAdmin = "Admin";
         public const string RoleEditor = "Editor";
-
+        
         public static List<string> musicGenres = new List<string>()
         {
             "Alternative",

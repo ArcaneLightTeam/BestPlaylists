@@ -1,4 +1,6 @@
-﻿namespace BestPlaylists.Data
+﻿using System.Data.Entity.ModelConfiguration.Conventions;
+
+namespace BestPlaylists.Data
 {
     using System.Data.Entity;
 
@@ -9,8 +11,16 @@
     public class BestPlaylistsDbContext : IdentityDbContext<User>, IBestPlaylistsDbContext
     {
         public BestPlaylistsDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public virtual IDbSet<Playlist> Playlists { get; set; }
