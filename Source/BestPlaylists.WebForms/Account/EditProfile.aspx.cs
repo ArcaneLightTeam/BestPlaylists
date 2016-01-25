@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,7 +24,6 @@ namespace BestPlaylists.WebForms.Account
 
             this.details.DataSource = new List<Data.Models.User>() { user };
             this.details.DataBind();
-
         }
 
         protected void UpdateUser_Click(object sende, EventArgs e)
@@ -29,17 +31,50 @@ namespace BestPlaylists.WebForms.Account
             string userId = this.User.Identity.GetUserId();
             Data.Models.User user = this.UserService.GetById(userId);
 
-            user.FirstName = (this.details.FindControl("tbFirstName") as TextBox).Text;
-            user.LastName = (this.details.FindControl("tbLastName") as TextBox).Text;
-            user.Email = (this.details.FindControl("tbEmail") as TextBox).Text;
-            user.YouTubeAccount = (this.details.FindControl("tbYouTube") as TextBox).Text;
-            user.FacebookAccount = (this.details.FindControl("tbFacebook") as TextBox).Text;
+            // because controls are nested in DetailsView
+            string newFirstName = this.GetTextFromInnerControl(this.details, "tbFirstName");
+            string newLastName = this.GetTextFromInnerControl(this.details, "tbLastName");
+            string newEmail = this.GetTextFromInnerControl(this.details, "tbEmail");
+            string newYouTubeAccount = this.GetTextFromInnerControl(this.details, "tbYouTube");
+            string newFaceBookAccount = this.GetTextFromInnerControl(this.details, "tbFacebook");
+
+            user.FirstName = newFirstName != null ? newFirstName : user.FirstName;
+            user.LastName = newLastName != null ? newLastName : user.LastName;
+            user.Email = newEmail != null ? newEmail : user.Email;
+            user.YouTubeAccount = newYouTubeAccount != null ? newYouTubeAccount : user.YouTubeAccount;
+            user.FacebookAccount = newFaceBookAccount != null ? newFaceBookAccount : user.FacebookAccount;
+
+            FileUpload fileUpload = this.details.FindControl("fileAvatar") as FileUpload;
+            if (fileUpload == null || !fileUpload.HasFile ||
+                !fileUpload.PostedFile.ContentType.Contains("image"))
+            {
+                string newAvatarUrl = this.GetTextFromInnerControl(this.details, "tbAvatar");
+                user.AvatarUrl = newAvatarUrl != null ? newAvatarUrl : user.AvatarUrl;
+            }
+            else
+            {
+                string filename = Path.GetFileNameWithoutExtension(fileUpload.FileName);
+                string extension = Path.GetExtension(fileUpload.FileName);
+                string path = Server.MapPath("~/App_Data/");
+                filename += DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss") + extension; 
+                fileUpload.SaveAs(path + filename) ;
+                user.AvatarUrl = path + filename;
+            }
 
             this.UserService.Update(user);
 
             this.Response.Redirect("~/Account/Manage");
         }
 
+        private string GetTextFromInnerControl(Control control, string innerControlID)
+        {
+            TextBox field = control.FindControl(innerControlID) as TextBox;
+            if (field == null)
+            {
+                return null;
+            }
 
+            return field.Text.Trim();
+        }
     }
 }

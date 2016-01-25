@@ -88,7 +88,13 @@
                         AutoGenerateRows="false"
                         ItemType="BestPlaylists.Data.Models.User">
                         <Fields>
-                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
+                            <asp:TemplateField >
+                                <ItemTemplate >
+                                    <img src="<%#: Item.AvatarUrl %>" alt="Avatar" class="img-thumbnail" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                             
+                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-Width="150" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
                                 <HeaderTemplate>
                                     <strong>First name:</strong>        
                                 </HeaderTemplate>
@@ -97,7 +103,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
+                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right"  HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
                                 <HeaderTemplate>
                                     <strong>Last name:</strong>        
                                 </HeaderTemplate>

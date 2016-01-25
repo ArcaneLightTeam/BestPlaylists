@@ -93,6 +93,21 @@
                         </ItemTemplate>
                     </asp:TemplateField>
 
+                    <%-- Avatar --%>
+                    <asp:TemplateField HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0" HeaderStyle-VerticalAlign="Middle">
+                        <HeaderTemplate>
+                            <label class="control-label">
+                                Avatar:
+                            </label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:TextBox runat="server"
+                                ID="tbAvatar"
+                                CssClass="form-control"
+                                Text="<%# Item.AvatarUrl %>" />
+                            <asp:FileUpload ID="fileAvatar" accept=".png, .jpg, .jpeg, .gif" runat="server" AllowMultiple="false" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Fields>
             </asp:DetailsView>
 
