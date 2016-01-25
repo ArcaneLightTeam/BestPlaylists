@@ -209,6 +209,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\default.jpg" />
+    <Content Include="Images\error-icon.png" />
+    <Content Include="Images\info-icon.png" />
+    <Content Include="Images\success-icon.png" />
+    <Content Include="Images\warning-icon.png" />
     <Content Include="Playlists\Create.aspx" />
     <Content Include="Playlists\Details.aspx" />
     <Content Include="Playlists\Show.aspx" />
