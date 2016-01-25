@@ -11,5 +11,6 @@
         public const string PublicPathImages = "/Images/";
         public const string ErrorUploadMessageFormat = "Only images with size up to <strong>{0}Mb</strong> are allowed for uploading!";
         public const string DateFormatForFileNameImages = "dd-MMM-yyyy-HH-mm-ss";
+        public const string DefaultAvatar = "/Images/default.jpg";
     }
 }
