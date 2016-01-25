@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,13 +22,16 @@ namespace BestPlaylists.WebForms.Playlists
             {
                 var playlist = this.Playlists.GetById(id);
 
-                this.plTitle.InnerText = Server.HtmlEncode(playlist.Title);
-                this.plDescription.InnerText = Server.HtmlEncode(playlist.Description);
+                this.plTitle.InnerText = Server.HtmlDecode(playlist.Title);
+                this.plDescription.InnerText = Server.HtmlDecode(playlist.Description);
                 this.repeaterVideos.DataSource = playlist.Videos;
                 this.plRating.InnerText = playlist.CurrentRating.ToString("F2");
 
-                var userId = this.User.Identity.GetUserId();
+                this.commentsCount.InnerText = playlist.Comments.Count().ToString();
+                this.postComment.Visible = this.IsUserLogged();
+                this.plComments.DataSource = playlist.Comments;
 
+                var userId = this.User.Identity.GetUserId();
                 if (userId != null && playlist.Ratings.All(u => u.UserId != userId))
                 {
                     string[] arrayOfRating = { "0", "1", "2", "3", "4", "5" };
@@ -59,7 +61,7 @@ namespace BestPlaylists.WebForms.Playlists
                     var rating = new Rating()
                     {
                         PlaylistId = id,
-                        UserId = this.User.Identity.GetUserId(),
+                        UserId = this.GetUserId(),
                         Value = rate
                     };
 
@@ -72,6 +74,49 @@ namespace BestPlaylists.WebForms.Playlists
                     this.Rating.Visible = false;
                 }
             }
+        }
+
+        protected void AddComment_Click(object sender, EventArgs e)
+        {
+            var id = 0;
+
+            // If PlayListId is Correct
+            if (!int.TryParse(this.Context.Request.QueryString["Id"], out id))
+            {
+                return;
+            }
+
+            var playlist = this.Playlists.GetById(id);
+            var userId = this.GetUserId();
+
+            // If last comment not from same user
+            if (playlist.Comments.LastOrDefault() != null && playlist.Comments.Last().UserId == userId)
+            {
+                return;
+            }
+
+            var comment = new Comment()
+            {
+                CreationDate = DateTime.Now,
+                PlaylistId = id,
+                Text = this.tbUserComment.Text,
+                UserId = userId
+            };
+
+            playlist.Comments.Add(comment);
+            this.Playlists.Update(playlist);
+
+            Response.Redirect("~/Playlists/Details?Id=" + id);
+        }
+
+        private bool IsUserLogged()
+        {
+            return this.User.Identity.IsAuthenticated;
+        }
+
+        private string GetUserId()
+        {
+            return this.User.Identity.GetUserId();
         }
     }
 }
