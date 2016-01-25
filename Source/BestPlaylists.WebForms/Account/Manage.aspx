@@ -81,7 +81,7 @@
                     --%>
                 </dl>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <asp:DetailsView runat="server" ID="userDetails"
                         GridLines="None"
                         CssClass="table col-md-5"
