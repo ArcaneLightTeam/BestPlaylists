@@ -31,7 +31,7 @@
                         <div class="text-center">Date</div>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <%# Item.CreationDate.ToString("dd-MM-yyyy") %>
+                        <%#: Item.CreationDate.ToString("dd-MM-yyyy") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -39,7 +39,7 @@
                         <div class="text-center">Rating</div>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <%# Item.CurrentRating.ToString("N2") %>
+                        <%#: Item.CurrentRating.ToString("N2") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -47,7 +47,7 @@
                         <div class="text-center">Category</div>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <%# Item.Category.Name %>
+                        <%#: Item.Category.Name %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -55,7 +55,7 @@
                         <div class="text-center">User</div>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <%# Item.User.UserName %>
+                        <%#: Item.User.UserName %>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

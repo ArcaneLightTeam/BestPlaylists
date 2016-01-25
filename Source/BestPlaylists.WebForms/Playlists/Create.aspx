@@ -3,7 +3,8 @@
     CodeBehind="Create.aspx.cs"
     Inherits="BestPlaylists.WebForms.Playlists.Create"
     MasterPageFile="~/Site.Master"
-    Title="Create Playlist" %>
+    Title="Create Playlist"
+    ValidateRequest="false" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <h1 class="title">Create Playlist</h1>
@@ -27,11 +28,10 @@
                         ErrorMessage="Title must be between 2 and 250 symbols!"
                         ControlToValidate="tbTitle" EnableClientScript="True"
                         ValidationExpression="[\w+|\d+|\s+]{2,250}" />
-
                 </div>
 
                 <label for="MainContent_tbTitle">Title</label>
-                <asp:TextBox runat="server" ID="tbTitle" TextMode="MultiLine" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="tbTitle" Mode="Encode" TextMode="MultiLine" CssClass="form-control" />
             </div>
             <div class="form-group">
                 <div class="pb-20 pt-10">
@@ -46,7 +46,7 @@
                 </div>
 
                 <label for="MainContent_tbDescription">Description</label>
-                <asp:TextBox runat="server" ID="tbDescription" TextMode="MultiLine" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="tbDescription" Mode="Encode" TextMode="MultiLine" CssClass="form-control" />
             </div>
             <div class="form-group">
                 <div class="pb-20 pt-10">
@@ -85,7 +85,7 @@
                 </div>
 
                 <label for="MainContent_tbVideo">Video <em>(separate with comma)</em></label>
-                <asp:TextBox runat="server" ID="tbVideo" TextMode="MultiLine" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="tbVideo" Mode="Encode" TextMode="MultiLine" CssClass="form-control" />
             </div>
             <div class="checkbox">
                 <label for="MainContent_cbPrivate">
@@ -94,7 +94,7 @@
                 </label>
             </div>
             <div class="pt-20">
-                <asp:Button ID="btnAddPlaylist" runat="server" Text="Add Playlist" OnClick="BtnAddPlaylist_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="btnAddPlaylist" runat="server" Text="Add Playlist" OnClick="BtnAddPlaylist_Click" CssClass="btn btn-success" />
             </div>
         </div>
     </div>

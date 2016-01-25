@@ -125,7 +125,7 @@ namespace BestPlaylists.Data.Migrations
                     var playlist = new Playlist()
                     {
                         Title = randomGenerator.GetRandomString(ModelsConstats.MinVideoTitleLength, ModelsConstats.MaxVideoTitleLength),
-                        Description = randomGenerator.GetRandomString(ModelsConstats.MinVideoTitleLength, ModelsConstats.MaxVideoDescriptionLength),
+                        Description = randomGenerator.GetRandomString(ModelsConstats.MinVideoTitleLength, ModelsConstats.MaxVideoDescriptionLength - 1500),
                         CreationDate = randomGenerator.GetRandomDate(DateTime.Now.AddYears(-i), DateTime.Now),
                         IsPrivate = (i % 2 == 0),
                         CurrentRating = randomGenerator.GetRandomNumber(1, 5) % 6,
@@ -149,7 +149,7 @@ namespace BestPlaylists.Data.Migrations
                         var video = new Video()
                         {
                             PlaylistId = i + 1,
-                            Url = "url",
+                            Url = "http://www.youtube.com/",
                             UserId = admin1Id
                         };
 

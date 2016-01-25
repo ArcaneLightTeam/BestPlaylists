@@ -1,20 +1,25 @@
 ﻿namespace BestPlaylists.WebForms.Account
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.UI;
+    using System.Web.UI.WebControls;
 
     using BestPlaylists.Common;
     using BestPlaylists.Data.Models;
     using BestPlaylists.WebForms.Helpers;
-
-    using Microsoft.Ajax.Utilities;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
+    using Ninject;
+    using Services.Data.Contracts;
 
     public partial class Register : Page
     {
+        [Inject]
+        public IUserService UserService { get; set; }
+
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             var manager = this.Context.GetOwinContext().GetUserManager<UserManager>();
@@ -44,6 +49,43 @@
             else
             {
                 this.ErrorMessage.Text = result.Errors.FirstOrDefault();
+            }
+        }
+
+        protected void UserName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tbUsername = sender as TextBox;
+            if (tbUsername.Text.Length < 3)
+            {
+                this.panelUserExist.Visible = false;
+                return;
+            }
+
+            this.panelUserExist.Visible = true;
+            IList<string> usernames = new List<string>();
+            if (this.ViewState[SiteConstants.CachedUsersKey] != null)
+            {
+                usernames = this.ViewState[SiteConstants.CachedUsersKey]
+                    .ToString()
+                    .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+            else
+            {
+                usernames = this.UserService.All().Select(x => x.UserName.ToLower()).ToList();
+                this.ViewState[SiteConstants.CachedUsersKey] = string.Join(" ", usernames);
+            }
+
+            if (usernames.Contains(tbUsername.Text.ToLower()))
+            {
+                this.Image1.ImageUrl = SiteConstants.ErrorIconPath;
+                this.labelUserExists.Text = "User already exists!";
+                this.labelUserExists.CssClass = "text-danger";
+            }
+            else
+            {
+                this.Image1.ImageUrl = SiteConstants.SuccessIconPath;
+                this.labelUserExists.CssClass = "text-success";
+                this.labelUserExists.Text = "Username is free";
             }
         }
     }

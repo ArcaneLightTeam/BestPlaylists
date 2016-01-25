@@ -32,7 +32,6 @@ namespace BestPlaylists.WebForms.Playlists
             if (filter != null && int.Parse(filter.ToString()) != -1)
             {
                 var id = int.Parse(filter.ToString());
-
                 return this.Playlists.GetAll().Where(p => p.CategoryId == id);
             }
 

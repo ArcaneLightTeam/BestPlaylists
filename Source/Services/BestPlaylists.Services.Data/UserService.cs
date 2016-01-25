@@ -1,5 +1,6 @@
 ﻿namespace BestPlaylists.Services.Data
 {
+    using System;
     using System.Linq;
 
     using BestPlaylists.Data.Models;
@@ -34,6 +35,11 @@
         {
             this.usersRepo.Update(user);
             this.usersRepo.SaveChanges();
+        }
+
+        public IQueryable<User> All()
+        {
+            return this.usersRepo.All();
         }
     }
 }

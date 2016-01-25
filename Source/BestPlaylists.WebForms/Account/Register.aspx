@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="BestPlaylists.WebForms.Account.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
+    <h2><%: Title %></h2>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
@@ -13,9 +13,20 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">Username</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="UserName" CssClass="form-control" TextMode="SingleLine" />
+                <asp:TextBox runat="server" ID="UserName" AutoPostBack="true" CssClass="form-control col-md-6" TextMode="SingleLine" OnTextChanged="UserName_TextChanged" />
+                <asp:UpdatePanel UpdateMode="Conditional" runat="server">
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="UserName" EventName="TextChanged" />
+                    </Triggers>
+                    <ContentTemplate>
+                        <p class="help-block col-md-6" runat="server"   visible="false"  id="panelUserExist">
+                            <asp:Image ImageUrl="imageurl"  ID="Image1" Width="25" AlternateText="Image" runat="server" />
+                            <asp:Label ID="labelUserExists"  runat="server" />
+                        </p>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
-                    CssClass="text-danger" ErrorMessage="The username field is required." />
+                    CssClass="text-danger col-md-12" ErrorMessage="The username field is required." />
             </div>
         </div>
         <div class="form-group">
@@ -44,7 +55,7 @@
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
             </div>
         </div>
-       <div class="form-group">
+        <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FirstName" CssClass="col-md-2 control-label">First name</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="FirstName" CssClass="form-control" TextMode="SingleLine" />

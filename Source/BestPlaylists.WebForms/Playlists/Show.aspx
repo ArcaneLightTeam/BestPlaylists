@@ -39,8 +39,9 @@
             <Columns>
                 <asp:TemplateField HeaderText="Title" SortExpression="Title">
                     <ItemTemplate>
-                        <asp:HyperLink runat="server" ID="hlDetails" NavigateUrl="~/Playlists/Details?Id=<%#Item.Id%>">
-                           <%#: Item.Title.Length > 30 ? Item.Title.Substring(0,30) + "..." : Item.Title %>    
+                        <asp:HyperLink ID="HyperLink1" runat="server" 
+                            NavigateUrl='<%# "Details?Id=" + Item.Id %>'>
+                            <%#: Item.Title.Length > 30 ? Item.Title.Substring(0, 30) + "..." : Item.Title %>     
                         </asp:HyperLink>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -59,11 +60,10 @@
 
                 <asp:TemplateField HeaderText="Creation Data" SortExpression="CreationDate">
                     <ItemTemplate>
-                        <%#: Item.CreationDate.ToString("d") %>
+                        <%#: Item.CreationDate.ToString("dd-MM-yyyy") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-
-                <asp:BoundField HeaderText="Rating" DataField="CurrentRating" SortExpression="CurrentRating" />
+                <asp:BoundField HeaderText="Rating" DataField="CurrentRating" DataFormatString="{0:F2}" SortExpression="CurrentRating" />
             </Columns>
 
         </asp:GridView>

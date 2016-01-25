@@ -31,7 +31,7 @@
 
                     <dt>Edit profile:</dt>
                     <dd>
-                        <asp:HyperLink NavigateUrl="/Account/EditProfile" CssClass="btn btn-warning" Text="Edit" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/EditProfile"  CssClass="btn btn-primary" Text="Edit" runat="server" />
                     </dd>
                     <%--
                         Phone Numbers can used as a second factor of verification in a two-factor authentication system.
@@ -90,7 +90,7 @@
                         <Fields>
                             <asp:TemplateField >
                                 <ItemTemplate >
-                                    <img src="<%#: Item.AvatarUrl %>" alt="Avatar" class="img-thumbnail" />
+                                    <img src="<%#: Item.AvatarUrl %>" Width="250" alt="Avatar" class="img-thumbnail" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                              
