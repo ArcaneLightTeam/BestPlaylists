@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using BestPlaylists.Services.Data.Contracts;
-using Ninject;
-
-namespace BestPlaylists.WebForms
+﻿namespace BestPlaylists.WebForms
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.UI;
+    using BestPlaylists.Common;
+    using BestPlaylists.Services.Data.Contracts;
+    using Ninject;
 
     public partial class _Default : Page
     {
@@ -15,13 +15,11 @@ namespace BestPlaylists.WebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // TODO:CONTSANTS - when common class library exist
-            // expires, playlists, 10 for playlist count and 
-            object expires = this.Cache["expires"];
+            object expires = this.Cache[SiteConstants.CacheExpiresKey];
 
             if (expires != null && DateTime.Parse(expires.ToString()) > DateTime.Now)
             {
-                this.gridTopPLaylists.DataSource = this.Cache["playlists"] as IList<Data.Models.Playlist>;
+                this.gridTopPLaylists.DataSource = this.Cache[SiteConstants.CachePlaylistsKey] as IList<Data.Models.Playlist>;
                 this.gridTopPLaylists.DataBind();
                 return;
             }
@@ -29,11 +27,11 @@ namespace BestPlaylists.WebForms
             IList<Data.Models.Playlist> topPlaylists =
                 Playlists.GetAll()
                 .OrderByDescending(p => p.CurrentRating)
-                .Take(10)
+                .Take(SiteConstants.HomePlaylistsSize)
                 .ToList();
 
-            this.Cache["playlists"] = topPlaylists;
-            this.Cache["expires"] = DateTime.Now.AddMinutes(10);
+            this.Cache[SiteConstants.CachePlaylistsKey] = topPlaylists;
+            this.Cache[SiteConstants.CacheExpiresKey] = DateTime.Now.AddMinutes(SiteConstants.MinutesToKeepCache);
 
             this.gridTopPLaylists.DataSource = topPlaylists;
             this.gridTopPLaylists.DataBind();

@@ -5,6 +5,7 @@
     using System.Web;
     using System.Web.UI;
 
+    using BestPlaylists.Common;
     using BestPlaylists.Data.Models;
     using BestPlaylists.WebForms.Helpers;
 
@@ -26,7 +27,7 @@
                 LastName = this.LastName?.Text,
                 FacebookAccount = string.IsNullOrWhiteSpace(this.FacebookAccount?.Text) ? null : this.FacebookAccount.Text,
                 YouTubeAccount = string.IsNullOrWhiteSpace(this.YouTubeAccount?.Text) ? null : this.YouTubeAccount.Text,
-                AvatarUrl = string.IsNullOrWhiteSpace(this.AvatarUrl?.Text) ? null : this.AvatarUrl.Text,
+                AvatarUrl = string.IsNullOrWhiteSpace(this.AvatarUrl?.Text) ? SiteConstants.DefaultAvatar : this.AvatarUrl.Text,
             };
 
             IdentityResult result = manager.Create(user, this.Password.Text);

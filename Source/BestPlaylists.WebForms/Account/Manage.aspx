@@ -81,28 +81,34 @@
                     --%>
                 </dl>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <asp:DetailsView runat="server" ID="userDetails"
                         GridLines="None"
                         CssClass="table col-md-5"
                         AutoGenerateRows="false"
                         ItemType="BestPlaylists.Data.Models.User">
                         <Fields>
-                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
+                            <asp:TemplateField >
+                                <ItemTemplate >
+                                    <img src="<%#: Item.AvatarUrl %>" alt="Avatar" class="img-thumbnail" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                             
+                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-Width="150" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
                                 <HeaderTemplate>
                                     <strong>First name:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Literal runat="server" Text="<%# Item.FirstName %>" />
+                                    <asp:Literal runat="server" Mode="Encode" Text="<%# Item.FirstName %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
+                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right"  HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
                                 <HeaderTemplate>
                                     <strong>Last name:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Literal runat="server" Text="<%# Item.LastName %>" />
+                                    <asp:Literal runat="server" Mode="Encode" Text="<%# Item.LastName %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -111,7 +117,7 @@
                                     <strong>Email name:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Literal runat="server" Text="<%# Item.Email %>" />
+                                    <asp:Literal runat="server" Mode="Encode" Text="<%# Item.Email %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
