@@ -6,7 +6,7 @@
 
     public interface IPlaylistService
     {
-        IQueryable<Playlist> GetById(int id);
+        Playlist GetById(int id);
 
         IQueryable<Playlist> GetAll();
 

@@ -51,7 +51,7 @@ namespace BestPlaylists.WebForms.Playlists
 
             ViewState["Filter"] = id;
             ListViewPlaylists_GetData();
-            playlistsGrid.DataBind();
+            gvPlayLists.DataBind();
         }
     }
 }
