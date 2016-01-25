@@ -18,16 +18,14 @@
                     DataValueField="Id"
                     OnSelectedIndexChanged="CategoryChanged"
                     AutoPostBack="True"
-                    AppendDataBoundItems="True" 
+                    AppendDataBoundItems="True"
                     CssClass="form-control">
-                    
                     <asp:ListItem Text="All Categories" Value="-1" />
                 </asp:DropDownList>
             </div>
         </div>
 
-        <asp:GridView runat="server"
-            ID="playlistsGrid"
+        <asp:GridView runat="server" ID="gvPlayLists"
             ItemType="BestPlaylists.Data.Models.Playlist"
             DataKeyNames="Id"
             SelectMethod="ListViewPlaylists_GetData"
@@ -41,9 +39,9 @@
             <Columns>
                 <asp:TemplateField HeaderText="Title" SortExpression="Title">
                     <ItemTemplate>
-                        <asp:LinkButton runat="server" ID="btnDetails" on>
-                            <%#: Item.Title.Length > 30 ? Item.Title.Substring(0,30) + "..." : Item.Title %>
-                        </asp:LinkButton>
+                        <asp:HyperLink runat="server" ID="hlDetails" NavigateUrl="~/Playlists/Details?Id=<%#Item.Id%>">
+                           <%#: Item.Title.Length > 30 ? Item.Title.Substring(0,30) + "..." : Item.Title %>    
+                        </asp:HyperLink>
                     </ItemTemplate>
                 </asp:TemplateField>
 
