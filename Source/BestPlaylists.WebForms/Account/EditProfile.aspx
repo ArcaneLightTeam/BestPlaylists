@@ -15,7 +15,7 @@
                 ItemType="BestPlaylists.Data.Models.User"
                 AutoGenerateRows="false"
                 DataKeyNames="Id">
-                
+
                 <Fields>
                     <%-- First Name --%>
                     <asp:TemplateField HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0" HeaderStyle-VerticalAlign="Middle">
@@ -89,7 +89,7 @@
                             <asp:TextBox runat="server"
                                 ID="tbFacebook"
                                 CssClass="form-control"
-                                Text="<%# Item.FacebookAccount %>" />
+                                Text="<%# Item.FacebookAccount %>" CausesValidation="true" />
                         </ItemTemplate>
                     </asp:TemplateField>
 
@@ -112,11 +112,19 @@
             </asp:DetailsView>
 
 
-            <asp:Panel ID="editBtns"  runat="server">
-                <asp:Button Text="Update" runat="server" CssClass="btn btn-warning" OnClick="UpdateUser_Click"/>
+            <asp:Panel ID="editBtns" runat="server">
+                <asp:Button Text="Update" runat="server" CssClass="btn btn-warning" OnClick="UpdateUser_Click" />
                 <asp:LinkButton PostBackUrl="~/Account/Manage.aspx" Text="Cancel" runat="server" CssClass="btn btn-default" />
             </asp:Panel>
 
+            <br />
+            <br />
+            <asp:Panel ID="panel" Visible="false" runat="server">
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">X</button>
+                    <p runat="server" id="errorText"></p>
+                </div>
+            </asp:Panel>
         </div>
     </div>
 </asp:Content>

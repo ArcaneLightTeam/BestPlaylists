@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Security.Principal;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Microsoft.AspNet.Identity;
-using Ninject;
-
-namespace BestPlaylists.WebForms.Account
+﻿namespace BestPlaylists.WebForms.Account
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    using BestPlaylists.Common;
+    using Microsoft.AspNet.Identity;
+    using Ninject;
+
     public partial class EditProfile : Page
     {
         [Inject]
@@ -53,12 +50,21 @@ namespace BestPlaylists.WebForms.Account
             }
             else
             {
+                if (fileUpload.PostedFile.ContentLength > SiteConstants.ImageMaxSize)
+                {
+                    this.panel.Visible = true;
+                    this.errorText.InnerHtml = string.Format(
+                        SiteConstants.ErrorUploadMessageFormat,
+                        SiteConstants.ImageMaxSize / (1000.0 * 1000.0));
+                    return;
+                }
+
                 string filename = Path.GetFileNameWithoutExtension(fileUpload.FileName);
                 string extension = Path.GetExtension(fileUpload.FileName);
-                string path = Server.MapPath("~/Images/");
-                filename += DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss") + extension; 
+                string path = Server.MapPath(SiteConstants.ServerPathImages);
+                filename += DateTime.Now.ToString(SiteConstants.DateFormatForFileNameImages) + extension; 
                 fileUpload.SaveAs(path + filename) ;
-                user.AvatarUrl = "/Images/" + filename;
+                user.AvatarUrl = SiteConstants.PublicPathImages + filename;
             }
 
             this.UserService.Update(user);
