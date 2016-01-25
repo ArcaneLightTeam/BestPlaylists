@@ -6,7 +6,6 @@
 
     public interface IUserService
     {
-
         IQueryable<User> GetAll();
 
         User GetById(string id);

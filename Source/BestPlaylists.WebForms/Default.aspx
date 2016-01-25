@@ -7,7 +7,7 @@
     </div>
     
     <div class="jumbotron">
-        <h2 class="text-center text-success">Top Playlists</h2>
+        <h2 class="text-center text-primary">Top Playlists</h2>
         <asp:GridView AutoGenerateColumns="false" CssClass="table text-center table-borderer" ItemType="BestPlaylists.Data.Models.Playlist" ID="gridTopPLaylists" runat="server">
             <Columns>
                 <asp:TemplateField>
@@ -59,7 +59,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
-            <HeaderStyle CssClass="bg-success" />
+            <HeaderStyle CssClass="bg-primary" />
         </asp:GridView>
     </div>
 </asp:Content>
