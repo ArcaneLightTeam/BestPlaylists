@@ -113,7 +113,7 @@
 
 
             <asp:Panel ID="editBtns" runat="server">
-                <asp:Button Text="Update" runat="server" CssClass="btn btn-warning" OnClick="UpdateUser_Click" />
+                <asp:Button Text="Update" runat="server" CssClass="btn btn-primary" OnClick="UpdateUser_Click" />
                 <asp:LinkButton PostBackUrl="~/Account/Manage.aspx" Text="Cancel" runat="server" CssClass="btn btn-default" />
             </asp:Panel>
 
