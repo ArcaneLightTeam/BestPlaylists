@@ -1,11 +1,13 @@
 ﻿namespace BestPlaylists.WebForms.Account
 {
     using System;
+    using System.Collections.Generic;
     using System.Web;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
-
+    using Ninject;
+    using Services.Data.Contracts;
     public partial class Manage : System.Web.UI.Page
     {
         protected string SuccessMessage
@@ -27,10 +29,19 @@
 
         public int LoginsCount { get; set; }
 
+        [Inject]
+        public IUserService UserService { get; set; }
+
         protected void Page_Load()
         {
-            var manager = this.Context.GetOwinContext().GetUserManager<UserManager>();
+            string userId = this.User.Identity.GetUserId();
+            Data.Models.User currentUser = UserService.GetById(userId);
+            this.userDetails.DataSource = new List<Data.Models.User>() { currentUser };
+            this.userDetails.DataBind();
 
+
+            var manager = this.Context.GetOwinContext().GetUserManager<UserManager>();
+            
             this.HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(this.User.Identity.GetUserId()));
 
             // Enable this after setting up two-factor authentientication

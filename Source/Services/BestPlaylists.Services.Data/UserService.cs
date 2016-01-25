@@ -24,5 +24,11 @@
         {
             return this.usersRepo.All().FirstOrDefault(x => x.UserName == userName);
         }
+
+        public void Update(User user)
+        {
+            this.usersRepo.Update(user);
+            this.usersRepo.SaveChanges();
+        }
     }
 }

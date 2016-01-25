@@ -7,5 +7,7 @@
         User GetById(string id);
 
         User GetByUserName(string userName);
+
+        void Update(User user);
     }
 }
