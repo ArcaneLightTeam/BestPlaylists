@@ -48,6 +48,11 @@
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {
+            if (!this.Page.User.IsInRole("Admin"))
+            {
+                this.admin.Visible = false;
+            }
+
             if (!this.IsPostBack)
             {
                 // Set Anti-XSRF token
