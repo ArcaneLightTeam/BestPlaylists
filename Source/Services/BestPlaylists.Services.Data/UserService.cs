@@ -20,6 +20,11 @@
             return this.usersRepo.GetById(id);
         }
 
+        public IQueryable<User> GetAll()
+        {
+            return this.usersRepo.All();
+        }
+
         public User GetByUserName(string userName)
         {
             return this.usersRepo.All().FirstOrDefault(x => x.UserName == userName);
