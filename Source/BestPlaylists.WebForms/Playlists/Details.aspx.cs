@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -24,7 +25,8 @@ namespace BestPlaylists.WebForms.Playlists
 
                 this.plTitle.InnerText = Server.HtmlDecode(playlist.Title);
                 this.plDescription.InnerText = Server.HtmlDecode(playlist.Description);
-                this.repeaterVideos.DataSource = playlist.Videos;
+                this.repeaterVideos.DataSource = GetUrlsFromVideo(playlist.Videos); //playlist.Videos;
+                this.videoCount.InnerText = playlist.Videos.Count().ToString();
                 this.plRating.InnerText = playlist.CurrentRating.ToString("F2");
 
                 this.commentsCount.InnerText = playlist.Comments.Count().ToString();
@@ -40,6 +42,11 @@ namespace BestPlaylists.WebForms.Playlists
                 else
                 {
                     this.Rating.Visible = false;
+                }
+
+                if (playlist.UserId != userId)
+                {
+                    this.btnEdit.Visible = false;
                 }
 
                 DataBind();
@@ -92,6 +99,9 @@ namespace BestPlaylists.WebForms.Playlists
             // If last comment not from same user
             if (playlist.Comments.LastOrDefault() != null && playlist.Comments.Last().UserId == userId)
             {
+                this.tbUserComment.Text = "Please, wait for replay before comment again...";
+                this.tbUserComment.Style.Add("color", "red");
+                this.tbUserComment.Style.Add("font-weight", "bold");
                 return;
             }
 
@@ -107,6 +117,27 @@ namespace BestPlaylists.WebForms.Playlists
             this.Playlists.Update(playlist);
 
             Response.Redirect("~/Playlists/Details?Id=" + id);
+        }
+
+        private IEnumerable<Video> GetUrlsFromVideo(ICollection<Video> videos)
+        {
+            var pattern = "www.youtube.com/watch?v=";
+            var videoChanged = new List<Video>();
+
+            foreach (var video in videos)
+            {
+                if (video.Url.IndexOf(pattern, StringComparison.Ordinal) != -1)
+                {
+                    var oldUrl = video.Url;
+                    var unusedVideoStringLength = oldUrl.IndexOf(pattern, StringComparison.Ordinal) + pattern.Length;
+                    var newUrl = oldUrl.Substring(unusedVideoStringLength, oldUrl.Length - unusedVideoStringLength);
+                    video.Url = newUrl;
+                }
+
+                videoChanged.Add(video);
+            }
+
+            return videoChanged;
         }
 
         private bool IsUserLogged()

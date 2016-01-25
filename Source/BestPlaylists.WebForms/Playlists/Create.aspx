@@ -28,7 +28,6 @@
                         ErrorMessage="Title must be between 2 and 250 symbols!"
                         ControlToValidate="tbTitle" EnableClientScript="True"
                         ValidationExpression="[\w+|\d+|\s+]{2,250}" />
-
                 </div>
 
                 <label for="MainContent_tbTitle">Title</label>
@@ -95,7 +94,7 @@
                 </label>
             </div>
             <div class="pt-20">
-                <asp:Button ID="btnAddPlaylist" runat="server" Text="Add Playlist" OnClick="BtnAddPlaylist_Click" CssClass="btn btn-primary" />
+                <asp:Button ID="btnAddPlaylist" runat="server" Text="Add Playlist" OnClick="BtnAddPlaylist_Click" CssClass="btn btn-success" />
             </div>
         </div>
     </div>

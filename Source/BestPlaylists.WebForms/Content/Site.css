@@ -51,23 +51,32 @@ input[type="select"] {
 .playlists .paging a,
 .playlists .paging span {
     display: inline-block;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
-    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    margin: 10px 1px;
     text-decoration: none;
-}
-
-.playlists .paging a {
-    background: #000000;
     color: #fff;
 }
 
+.playlists .paging a {
+    background-image: linear-gradient(to bottom, #337ab7 0, #265a88 100%);
+}
+
 .playlists .paging a:hover {
-    background: red;
+    background: #265a88;
+    border-color: #245580;
 }
 
 .playlists .paging span {
-    background: #708090;
-    color: #000;
+    background: #265a88;
+    border-color: #245580;
+}
+
+.videoPlayer {
+    border: 1px solid #ccc;
+    height: 420px;
+    padding: 20px 0;
+    overflow-y: scroll;
 }

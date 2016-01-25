@@ -13,6 +13,15 @@ namespace BestPlaylists.WebForms.Playlists {
     public partial class Details {
         
         /// <summary>
+        /// btnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnEdit;
+        
+        /// <summary>
         /// plTitle control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace BestPlaylists.WebForms.Playlists {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl plDescription;
+        
+        /// <summary>
+        /// videoCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl videoCount;
         
         /// <summary>
         /// repeaterVideos control.

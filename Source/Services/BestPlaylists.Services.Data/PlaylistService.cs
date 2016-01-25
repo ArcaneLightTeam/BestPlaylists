@@ -36,7 +36,7 @@
         {
             return this.playlistRepo.All()
                 .Where(x => (!x.IsRemoved))
-                .OrderByDescending(c => c.Title);
+                .OrderByDescending(c => c.CreationDate);
         }
 
         public int Add(string title, string description, int categoryId, string userId, bool isPrivate)

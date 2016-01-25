@@ -7,7 +7,14 @@
     ValidateRequest="false" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
-    <h1 class="title">Details</h1>
+    <div class="row">
+        <h1 class="title">Details</h1>
+
+        <%-- TODO: Misho Place your edit url here --%>
+        <div class="pull-right">
+            <a runat="server" id="btnEdit" href="#" class="btn btn-primary">Edit Playlist</a>    
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <h2>Title:</h2>
@@ -19,17 +26,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <asp:Repeater runat="server" ID="repeaterVideos"
-                ItemType="BestPlaylists.Data.Models.Video">
-                <HeaderTemplate>
-                    <h2>Videos:</h2>
-                </HeaderTemplate>
+        <h2 class="pl-20">Videos <span runat="server" id="videoCount"></span>:</h2>
+        <div class="col-md-6 videoPlayer">
+            <asp:Repeater runat="server" ID="repeaterVideos" ItemType="BestPlaylists.Data.Models.Video">
                 <ItemTemplate>
-                    <p>
-                        <a href="<%#: Item.Url %>" target="_blank">Watch Video - <%#: Item.Playlist.Title %></a>
-                    </p>
+                    <div class="text-center">
+                        <p>
+                            <a href='<%#: "https://www.youtube.com/watch?v=" + Item.Url %>' target="_blank" class="btn btn-default">See in YouTube</a>
+                        </p>
+                        <iframe width="400" height="320" src='<%#: "https://www.youtube.com/embed/" + Item.Url %>' runat="server" frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </ItemTemplate>
+                <SeparatorTemplate>
+                    <hr />
+                </SeparatorTemplate>
             </asp:Repeater>
         </div>
         <div class="col-md-6">
@@ -63,7 +73,7 @@
     </div>
     <div class="row" runat="server" id="postComment">
         <div class="col-md-12 form-group">
-            
+
             <div class="mt-15 mb-15">
                 <asp:RequiredFieldValidator
                     runat="server"
@@ -79,7 +89,7 @@
             <asp:TextBox runat="server" TextMode="MultiLine" Mode="Encode" ID="tbUserComment" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="col-md-12">
-            <asp:Button runat="server" CssClass="btn btn-primary" Text="Add Comment" OnClick="AddComment_Click" />
+            <asp:Button runat="server" CssClass="btn btn-success" Text="Add Comment" OnClick="AddComment_Click" />
         </div>
     </div>
 </asp:Content>
