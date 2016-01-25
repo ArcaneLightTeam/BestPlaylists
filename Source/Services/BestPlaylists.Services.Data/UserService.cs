@@ -36,10 +36,5 @@
             this.usersRepo.Update(user);
             this.usersRepo.SaveChanges();
         }
-
-        public IQueryable<User> All()
-        {
-            return this.usersRepo.All();
-        }
     }
 }
