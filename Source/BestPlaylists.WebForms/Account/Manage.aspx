@@ -93,7 +93,7 @@
                                     <strong>First name:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Literal runat="server" Text="<%# Item.FirstName %>" />
+                                    <asp:Literal runat="server" Mode="Encode" Text="<%# Item.FirstName %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -102,7 +102,7 @@
                                     <strong>Last name:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Literal runat="server" Text="<%# Item.LastName %>" />
+                                    <asp:Literal runat="server" Mode="Encode" Text="<%# Item.LastName %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -111,7 +111,7 @@
                                     <strong>Email name:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Literal runat="server" Text="<%# Item.Email %>" />
+                                    <asp:Literal runat="server" Mode="Encode" Text="<%# Item.Email %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 

@@ -25,12 +25,10 @@
                             </label>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            
                             <asp:TextBox runat="server"
                                 ID="tbFirstName"
                                 CssClass="form-control"
                                 Text="<%# Item.FirstName %>" />
-                            <%--<asp:Literal runat="server" Text="<%# Item.FirstName %>" Mode="Encode" />--%>
                         </ItemTemplate>
                     </asp:TemplateField>
 
@@ -42,8 +40,6 @@
                             </label>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <%--<asp:Literal runat="server" Text="<%# Item.LastName %>" Mode="Encode" />--%>
-                            
                             <asp:TextBox runat="server"
                                 ID="tbLastName"
                                 CssClass="form-control"
@@ -59,11 +55,10 @@
                             </label>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <%--<asp:Literal runat="server" Text="<%# Item.Email %>" Mode="Encode" />--%>
-                            
                             <asp:TextBox runat="server"
                                 ID="tbEmail"
                                 CssClass="form-control"
+                                Type="Email"
                                 Text="<%# Item.Email %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -76,8 +71,6 @@
                             </label>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <%--<asp:Literal runat="server" Text="<%# Item.YouTubeAccount %>" Mode="Encode" />--%>
-                            
                             <asp:TextBox runat="server"
                                 ID="tbYouTube"
                                 CssClass="form-control"
@@ -93,8 +86,6 @@
                             </label>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <%--<asp:HyperLink NavigateUrl="<%# Item.FacebookAccount %>" runat="server" Text="Link" />--%>
-                            
                             <asp:TextBox runat="server"
                                 ID="tbFacebook"
                                 CssClass="form-control"
