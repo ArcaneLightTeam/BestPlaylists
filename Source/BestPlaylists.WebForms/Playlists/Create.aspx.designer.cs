@@ -22,6 +22,15 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitel;
         
         /// <summary>
+        /// regxTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxTitle;
+        
+        /// <summary>
         /// tbTitle control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescription;
         
         /// <summary>
+        /// regxDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxDescription;
+        
+        /// <summary>
         /// tbDescription control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace BestPlaylists.WebForms.Playlists {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDescription;
+        
+        /// <summary>
+        /// rfvCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCategory;
         
         /// <summary>
         /// ddlCategory control.
@@ -58,13 +85,13 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
-        /// cbPrivate control.
+        /// rfvVideo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbPrivate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvVideo;
         
         /// <summary>
         /// tbVideo control.
@@ -74,6 +101,15 @@ namespace BestPlaylists.WebForms.Playlists {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbVideo;
+        
+        /// <summary>
+        /// cbPrivate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbPrivate;
         
         /// <summary>
         /// btnAddPlaylist control.

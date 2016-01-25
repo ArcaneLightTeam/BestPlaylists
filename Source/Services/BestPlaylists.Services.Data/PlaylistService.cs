@@ -18,9 +18,9 @@
             this.usersRepo = usersRepo;
         }
 
-        public IQueryable<Playlist> GetById(int id)
+        public Playlist GetById(int id)
         {
-            return this.playlistRepo.All().Where(pr => pr.Id == id);
+            return this.playlistRepo.All().FirstOrDefault(pr => pr.Id == id);
         }
 
         public IQueryable<Playlist> GetByCategory(string categoryName)
