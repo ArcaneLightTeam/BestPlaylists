@@ -24,7 +24,10 @@ namespace BestPlaylists.Common
                 result.Append(AlphaNum[random.Next(0, AlphaNum.Length - 1)]);
             }
 
-            return result.ToString();
+            // Simulate spacing
+            result.Replace('A', ' ').Replace('a', ' ');
+
+            return result.ToString().Trim();
         }
 
         public DateTime GetRandomDate(DateTime? after = null, DateTime? before = null)
