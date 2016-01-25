@@ -55,10 +55,10 @@ namespace BestPlaylists.WebForms.Account
             {
                 string filename = Path.GetFileNameWithoutExtension(fileUpload.FileName);
                 string extension = Path.GetExtension(fileUpload.FileName);
-                string path = Server.MapPath("~/App_Data/");
+                string path = Server.MapPath("~/Images/");
                 filename += DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss") + extension; 
                 fileUpload.SaveAs(path + filename) ;
-                user.AvatarUrl = path + filename;
+                user.AvatarUrl = "/Images/" + filename;
             }
 
             this.UserService.Update(user);
