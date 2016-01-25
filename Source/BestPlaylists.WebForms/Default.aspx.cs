@@ -16,7 +16,6 @@
         protected void Page_Load(object sender, EventArgs e)
         {
             object expires = this.Cache[SiteConstants.CacheExpiresKey];
-
             if (expires != null && DateTime.Parse(expires.ToString()) > DateTime.Now)
             {
                 this.gridTopPLaylists.DataSource = this.Cache[SiteConstants.CachePlaylistsKey] as IList<Data.Models.Playlist>;
