@@ -17,18 +17,25 @@
                 <h4>Change your account settings</h4>
                 <hr />
                 <dl class="dl-horizontal">
+                    <dt>Your playlists:</dt>
+                    <dd>
+                        <asp:HyperLink NavigateUrl="/Account/YourPlaylists" Text="Playlists" CssClass="btn btn-default" runat="server" />
+                    </dd>
+                    <br />
+
                     <dt>Password:</dt>
                     <dd>
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Change" CssClass="btn btn-primary" Visible="false" ID="ChangePassword" runat="server" />
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Create" CssClass="btn btn-primary" Visible="false" ID="CreatePassword" runat="server" />
                     </dd>
                     <br />
+                    
                     <%--<dt>External Logins:</dt>
                     <dd><%: LoginsCount %>
                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
 
                     </dd>--%>
-
+                    
                     <dt>Edit profile:</dt>
                     <dd>
                         <asp:HyperLink NavigateUrl="/Account/EditProfile"  CssClass="btn btn-primary" Text="Edit" runat="server" />
@@ -88,13 +95,16 @@
                         AutoGenerateRows="false"
                         ItemType="BestPlaylists.Data.Models.User">
                         <Fields>
-                            <asp:TemplateField >
+                            <asp:TemplateField  HeaderStyle-HorizontalAlign="Right" HeaderStyle-Width="150" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0" >
+                                <HeaderTemplate>
+                                   <strong>Profile Image:</strong>    
+                                </HeaderTemplate>
                                 <ItemTemplate >
                                     <img src="<%#: Item.AvatarUrl %>" Width="250" alt="Avatar" class="img-thumbnail" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                              
-                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-Width="150" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
+                            <asp:TemplateField HeaderStyle-HorizontalAlign="Right" HeaderStyle-BorderWidth="0" ItemStyle-BorderWidth="0">
                                 <HeaderTemplate>
                                     <strong>First name:</strong>        
                                 </HeaderTemplate>
