@@ -10,18 +10,31 @@
         <h1 class="title">All Playlists</h1>
 
         <div class="row">
-            <div class="form-group col-md-12">
-                <label for="">Select Category</label>
-                <asp:DropDownList runat="server"
-                    ID="ddlCategory"
-                    DataTextField="Name"
-                    DataValueField="Id"
-                    OnSelectedIndexChanged="CategoryChanged"
-                    AutoPostBack="True"
-                    AppendDataBoundItems="True"
-                    CssClass="form-control">
-                    <asp:ListItem Text="All Categories" Value="-1" />
-                </asp:DropDownList>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-3" for="">Select Category</label>
+                <div class="col-md-9">
+                    <asp:DropDownList runat="server"
+                        ID="ddlCategory"
+                        DataTextField="Name"
+                        DataValueField="Id"
+                        OnSelectedIndexChanged="CategoryChanged"
+                        AutoPostBack="True"
+                        AppendDataBoundItems="True"
+                        CssClass="form-control">
+                        <asp:ListItem Text="All Categories" Value="-1" />
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-3" for="">Search by title</label>
+                <div class="col-md-7">
+                    <asp:TextBox runat="server"
+                        ID="SearchTextBox"
+                        AppendDataBoundItems="True"
+                        CssClass="form-control">
+                    </asp:TextBox>
+                </div>
+                <asp:Button runat="server" CssClass="btn btn-default col-md-2" Text="Search" OnClick="SearchTitle" />
             </div>
         </div>
 

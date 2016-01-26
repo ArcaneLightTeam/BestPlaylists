@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using BestPlaylists.Data.Models;
-using BestPlaylists.Services.Data.Contracts;
-using Ninject;
-
-namespace BestPlaylists.WebForms.Playlists
+﻿namespace BestPlaylists.WebForms.Playlists
 {
+    using System;
+    using System.Linq;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    using BestPlaylists.Data.Models;
+    using BestPlaylists.Services.Data.Contracts;
+    using Ninject;
+
     public partial class Show : Page
     {
         [Inject]
@@ -29,13 +29,23 @@ namespace BestPlaylists.WebForms.Playlists
         {
             var filter = this.ViewState["Filter"];
 
+            var search = this.ViewState["Search"];
+
+            IQueryable<Playlist> data = this.Playlists.GetAll();
+
             if (filter != null && int.Parse(filter.ToString()) != -1)
             {
                 var id = int.Parse(filter.ToString());
-                return this.Playlists.GetAll().Where(p => p.CategoryId == id);
+                data = data.Where(p => p.CategoryId == id);
             }
 
-            return this.Playlists.GetAll();
+            if (search != null && search.ToString().Length > 0)
+            {
+                var searchTitle = search.ToString();
+               data = data.Where(p => p.Title.Contains(searchTitle));
+            }
+
+            return data;
         }
 
         protected void CategoryChanged(object sender, EventArgs e)
@@ -49,6 +59,21 @@ namespace BestPlaylists.WebForms.Playlists
             }
 
             this.ViewState["Filter"] = id;
+            this.ListViewPlaylists_GetData();
+            this.gvPlayLists.DataBind();
+        }
+
+        protected void SearchTitle(object sender, EventArgs e)
+        {
+            var searchBox = this.SearchTextBox;
+            var searchTitle = "";
+
+            if (searchBox != null)
+            {
+                searchTitle = searchBox.Text;
+            }
+
+            this.ViewState["Search"] = searchTitle;
             this.ListViewPlaylists_GetData();
             this.gvPlayLists.DataBind();
         }

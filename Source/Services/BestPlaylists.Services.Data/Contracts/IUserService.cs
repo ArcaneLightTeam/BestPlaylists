@@ -13,5 +13,7 @@
         User GetByUserName(string userName);
 
         void Update(User user);
+
+        void Remove(string id);
     }
 }

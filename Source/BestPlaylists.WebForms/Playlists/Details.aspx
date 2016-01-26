@@ -43,6 +43,8 @@
             </asp:Repeater>
         </div>
         <div class="col-md-6">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
             <h2>Rating: <strong runat="server" id="plRating"></strong></h2>
             <asp:DropDownList runat="server" ID="Rating"
                 OnSelectedIndexChanged="Rating_OnSelectedIndexChanged"
@@ -50,7 +52,9 @@
                 AppendDataBoundItems="True"
                 CssClass="form-control" 
                 DataTextField="Name"
-                DataValueField="Value"/>
+                        DataValueField="Value" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
     <div class="row">
