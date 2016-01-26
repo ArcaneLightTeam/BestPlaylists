@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace BestPlaylists.WebForms.Account
+﻿namespace BestPlaylists.WebForms.Account
 {
-    using System.Data;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+
     using Data.Models;
     using Microsoft.AspNet.Identity;
+    using BestPlaylists.Common;
     using Ninject;
     using Services.Data.Contracts;
 
@@ -25,15 +24,15 @@ namespace BestPlaylists.WebForms.Account
         {
             if (!this.IsPostBack)
             {
-                this.Session["filtered"] = null;
-                this.Session["playlists"] = null;
-                this.Session["categories"] = null;
+                this.Session[SiteConstants.FilteredKey] = null;
+                this.Session[SiteConstants.CachePlaylistsKey] = null;
+                this.Session[SiteConstants.CategoriesKey] = null;
             }
 
-            IList<Playlist> playlistsOfThisUser = this.Session["filtered"] as List<Playlist>;
+            IList<Playlist> playlistsOfThisUser = this.Session[SiteConstants.FilteredKey] as List<Playlist>;
             if (playlistsOfThisUser == null)
             {
-                playlistsOfThisUser = this.Session["playlists"] as List<Playlist>;
+                playlistsOfThisUser = this.Session[SiteConstants.CachePlaylistsKey] as List<Playlist>;
             }
 
             if (playlistsOfThisUser == null)
@@ -41,15 +40,15 @@ namespace BestPlaylists.WebForms.Account
                 // query to db
                 string userId = this.User.Identity.GetUserId();
                 playlistsOfThisUser = this.PlaylistService.GetAll().Where(c => c.UserId == userId).ToList();
-                this.Session["playlists"] = playlistsOfThisUser;
+                this.Session[SiteConstants.CachePlaylistsKey] = playlistsOfThisUser;
             }
 
-            IList<Category> categories = this.Session["categories"] as List<Category>;
+            IList<Category> categories = this.Session[SiteConstants.CategoriesKey] as List<Category>;
             if (categories == null)
             {
                 // query to db
                 categories = CategoryService.GetAll().ToList();
-                this.Session["categories"] = categories;
+                this.Session[SiteConstants.CategoriesKey] = categories;
             }
 
             this.ddlCategory.DataSource = categories;
@@ -62,13 +61,13 @@ namespace BestPlaylists.WebForms.Account
         protected void CategoryChanged(object sender, EventArgs e)
         {
             DropDownList dropDownCategories = (sender as DropDownList);
-            IList<Playlist> playlists = this.Session["playlists"] as List<Playlist>;
+            IList<Playlist> playlists = this.Session[SiteConstants.CachePlaylistsKey] as List<Playlist>;
             if (dropDownCategories == null)
             {
                 return;
             }
 
-            IList<Category> categories = this.Session["categories"] as List<Category>;
+            IList<Category> categories = this.Session[SiteConstants.CategoriesKey] as List<Category>;
             if (categories == null)
             {
                 return;
@@ -82,15 +81,15 @@ namespace BestPlaylists.WebForms.Account
 
             if (categoryId < 0)
             {
-                this.gvUserPlayLists.DataSource = this.Session["playlists"] as List<Playlist>;
-                this.Session["filtered"] = null;
+                this.gvUserPlayLists.DataSource = this.Session[SiteConstants.CachePlaylistsKey] as List<Playlist>;
+                this.Session[SiteConstants.FilteredKey] = null;
             }
             else
             {
                 Category selectedCategory = categories.FirstOrDefault(c => c.Id == categoryId);
                 IList<Playlist> filteredPlaylists = playlists.Where(p => p.Category.Name == selectedCategory.Name).ToList();
                 this.gvUserPlayLists.DataSource = filteredPlaylists;
-                this.Session["filtered"] = filteredPlaylists;
+                this.Session[SiteConstants.FilteredKey] = filteredPlaylists;
             }
 
 
@@ -129,33 +128,35 @@ namespace BestPlaylists.WebForms.Account
         {
             //this.gvUserPlayLists.SetPageIndex(2); // This rises the same event here
             this.gvUserPlayLists.PageIndex = e.NewPageIndex;
-            if (this.ViewState["sortDirection"] != null)
+            if (this.ViewState[SiteConstants.SortDirectionKey] != null)
             {
-                string sortExpression = this.ViewState["sortExpression"].ToString();
+                string sortExpression = this.ViewState[SiteConstants.SortExpressionKey].ToString();
                 this.gvUserPlayLists.Sort(sortExpression, this.GetSortDirectionFromViewState(sortExpression));
             }
         }
 
         private SortDirection GetSortDirectionFromViewState(string sortExpression)
         {
-            if (this.ViewState["sortDirection"] == null)
+            if (this.ViewState[SiteConstants.SortDirectionKey] == null)
             {
-                this.ViewState["sortDirection"] = "Ascending";
+                this.ViewState[SiteConstants.SortDirectionKey] = SiteConstants.Ascending;
             }
             else
             {
-                if (this.ViewState["sortDirection"].ToString() == "Ascending")
+                if (this.ViewState[SiteConstants.SortDirectionKey].ToString() == SiteConstants.Ascending)
                 {
-                    this.ViewState["sortDirection"] =
-                        this.ViewState["sortExpression"].ToString() == sortExpression ? "Descending" : "Ascending";
+                    this.ViewState[SiteConstants.SortDirectionKey] =
+                        this.ViewState[SiteConstants.SortExpressionKey].ToString() == sortExpression ?
+                        SiteConstants.Descending : SiteConstants.Ascending;
                 }
-                else if (this.ViewState["sortDirection"].ToString() == "Descending")
+                else 
                 {
-                    this.ViewState["sortDirection"] = "Ascending";
+                    this.ViewState[SiteConstants.SortDirectionKey] = SiteConstants.Ascending;
                 }
             }
-            this.ViewState["sortExpression"] = sortExpression;
-            return (SortDirection)Enum.Parse(typeof(SortDirection), this.ViewState["sortDirection"].ToString());
+
+            this.ViewState[SiteConstants.SortExpressionKey] = sortExpression;
+            return (SortDirection)Enum.Parse(typeof(SortDirection), this.ViewState[SiteConstants.SortDirectionKey].ToString());
         }
     }
 }

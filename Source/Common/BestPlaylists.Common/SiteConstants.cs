@@ -4,14 +4,21 @@
     {
         public const int HomePlaylistsSize = 10;
         public const int MinutesToKeepCache = 10;
+        public const int ImageMaxSize = 100 * 10240;
+        public const string DateFormatForFileNameImages = "dd-MMM-yyyy-HH-mm-ss";
+        public const string Ascending = "Ascending";
+        public const string Descending = "Descending";
+
         public const string CacheExpiresKey = "expires";
         public const string CachePlaylistsKey = "playlists";
         public const string CachedUsersKey = "usernames";
-        public const int ImageMaxSize = 100 * 10240;
+        public const string FilteredKey = "filtered";
+        public const string CategoriesKey = "categories";
+        public const string SortExpressionKey = "sortExpression";
+        public const string SortDirectionKey = "sortDirection";
+
         public const string ServerPathImages = "~/Images/";
         public const string PublicPathImages = "/Images/";
-        public const string DateFormatForFileNameImages = "dd-MMM-yyyy-HH-mm-ss";
-
         public const string DefaultAvatar = "/Images/default.jpg";
         public const string SuccessIconPath = "/Images/success-icon.png";
         public const string ErrorIconPath = "/Images/error-icon.png";
