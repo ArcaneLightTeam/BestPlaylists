@@ -36,5 +36,17 @@
             this.usersRepo.Update(user);
             this.usersRepo.SaveChanges();
         }
+
+        public void Remove(string id)
+        {
+            User userToDelete = this.usersRepo.GetById(id);
+
+            if (userToDelete != null)
+            {
+                this.usersRepo.Delete(userToDelete);
+
+                this.usersRepo.SaveChanges();
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@
 
         <%-- TODO: Misho Place your edit url here --%>
         <div class="pull-right">
-            <a runat="server" id="btnEdit" href="#" class="btn btn-primary">Edit Playlist</a>    
+            <a runat="server" id="btnEdit" href="#" class="btn btn-primary">Edit Playlist</a>
         </div>
     </div>
     <div class="row">
@@ -43,14 +43,18 @@
             </asp:Repeater>
         </div>
         <div class="col-md-6">
-            <h2>Rating: <strong runat="server" id="plRating"></strong></h2>
-            <asp:DropDownList runat="server" ID="Rating"
-                OnSelectedIndexChanged="Rating_OnSelectedIndexChanged"
-                AutoPostBack="True"
-                AppendDataBoundItems="True"
-                CssClass="form-control" 
-                DataTextField="Name"
-                DataValueField="Value"/>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <h2>Rating: <strong runat="server" id="plRating"></strong></h2>
+                    <asp:DropDownList runat="server" ID="Rating"
+                        OnSelectedIndexChanged="Rating_OnSelectedIndexChanged"
+                        AutoPostBack="True"
+                        AppendDataBoundItems="True"
+                        CssClass="form-control"
+                        DataTextField="Name"
+                        DataValueField="Value" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
     <div class="row">

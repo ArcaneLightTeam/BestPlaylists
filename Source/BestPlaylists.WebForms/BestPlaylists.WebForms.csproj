@@ -211,6 +211,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\admin-zone.jpg" />
     <Content Include="Images\default.jpg" />
     <Content Include="Images\playlist-main.png" />
     <Content Include="NotFound.aspx" />
@@ -267,7 +268,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="web.sitemap" />
+    <Content Include="web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AddPhoneNumber.aspx.cs">
