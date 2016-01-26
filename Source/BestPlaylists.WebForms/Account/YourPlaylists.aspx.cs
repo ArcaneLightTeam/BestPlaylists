@@ -39,7 +39,7 @@
             {
                 // query to db
                 string userId = this.User.Identity.GetUserId();
-                playlistsOfThisUser = this.PlaylistService.GetAll().Where(c => c.UserId == userId).ToList();
+                playlistsOfThisUser = this.PlaylistService.GetAll().Where(c => c.UserId == userId && !c.IsRemoved).ToList();
                 this.Session[SiteConstants.CachePlaylistsKey] = playlistsOfThisUser;
             }
 
