@@ -1,19 +1,20 @@
 ﻿<%@ Page Title="Edit Playlist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="BestPlaylists.WebForms.Playlists.Edit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
+
     <asp:Panel ID="playlistNotFoundPanel" runat="server"
-         Visible="False"
+        Visible="False"
         EnableViewState="false">
         <br />
         <br />
         <br />
         <div class="alert alert-dismissible alert-danger">
-           <p>Cannot find the playlist! You can check
+            <p>
+                Cannot find the playlist! You can check
                 <a href="/Account/YourPlaylists" class="alert-link">your playlists</a>
-               or return to 
+                or return to 
                <a href="/" class="alert-link">Home</a>
-           </p>
+            </p>
         </div>
     </asp:Panel>
     <asp:Panel ID="editPlaylistPanel" runat="server">
@@ -37,7 +38,8 @@
                             Display="Dynamic"
                             ErrorMessage="Title must be between 2 and 250 symbols!"
                             ControlToValidate="tbTitle" EnableClientScript="True"
-                            ValidationExpression="[\w+|\d+|\s+]{2,250}" />
+                            CssClass="alert alert-danger"
+                            ValidationExpression=".{2,250}" />
                     </div>
 
                     <label for="MainContent_tbTitle">Title</label>
@@ -96,6 +98,66 @@
                         CssClass="btn btn-primary pull-right" />
                 </div>
             </div>
+
+            <div class="col-md-3 col-md-offset-2">
+                <h3 class="text-primary">Videos
+                    <span id="videoCount" runat="server" class="badge badge-primary"></span>
+                </h3>
+                <div class="row panel panel-primary"
+                    style="height: 500px; overflow-y: scroll;">
+                    <asp:Repeater ItemType="BestPlaylists.Data.Models.Video" ID="videosRepeater" runat="server">
+                        <ItemTemplate>
+                            <div>
+                                <iframe width="190" height="90"
+                                    src=' <%#"https://www.youtube.com/embed/" + Item.Url.Substring(Item.Url.IndexOf("=") + 1) %>'>s
+                                </iframe>
+                                <asp:Button runat="server"
+                                    Text="X"
+                                    ID="deleteButton"
+                                    CommandArgument="<%# Item.Id %>"
+                                    Title="Video will be deleted"
+                                    OnCommand="DeleteVideo_Command"
+                                    CssClass="btn btn-danger"
+                                    style="position: absolute" />
+                                <hr />
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+
+                <br />
+                <div>
+                    <div class="form-group">
+                        <label class="label-control" for="tbAddVideo">Add video</label>
+                        <div class="input-group">
+                            <asp:TextBox ID="tbAddVideo" runat="server"
+                                Placeholder="https://www.youtube.com/watch?v=Ebbkkfp-YBk"
+                                CssClass="form-control search-query"
+                                Width="300" />
+                            <span class="input-group-btn">
+                                <asp:Button Text="Add" CssClass="btn btn-success" runat="server" OnClick="AddVideo_Click" />
+                            </span>
+                        </div>
+
+                        <asp:RegularExpressionValidator ID="revYouTubeUrl"
+                            ControlToValidate="tbAddVideo"
+                            CssClass="text-danger"
+                            Width="300"
+                            ValidationExpression="(https?:\/\/.*?youtube\.com)\/watch\?v=(.*)"
+                            ErrorMessage="Url Should match https://www.youtube.com/watch?v="
+                            runat="server" />
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5">
+                <asp:Button runat="server" ID="deletePlaylist"
+                    Text="Delete"
+                    CssClass="btn btn-block btn-danger"
+                    OnClick="DeletePlaylist_Click" />
+            </div>
+        </div>
+
     </asp:Panel>
 </asp:Content>
