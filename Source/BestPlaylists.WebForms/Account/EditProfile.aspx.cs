@@ -115,7 +115,7 @@
             if ((!string.IsNullOrWhiteSpace(user.FacebookAccount) &&
                 !new Regex(SiteConstants.FacebookRegex).IsMatch(user.FacebookAccount)))
             {
-                return string.Format("{0} is {2} for Facebook",user.FacebookAccount, SiteConstants.ErrorAccountLink);
+                return string.Format("{0} is {1} for Facebook",user.FacebookAccount, SiteConstants.ErrorAccountLink);
             }
 
             if ((!string.IsNullOrWhiteSpace(user.YouTubeAccount) &&
