@@ -32,17 +32,14 @@
             AllowSorting="True"
             AllowPaging="True" PageSize="10"
             AutoGenerateColumns="False"
-            CssClass="table table-bordered">
+            CssClass="table table-bordered table-hover table-responsive table-striped">
 
             <PagerStyle CssClass="paging" />
 
             <Columns>
                 <asp:TemplateField HeaderText="Title" SortExpression="Title">
                     <ItemTemplate>
-                        <asp:HyperLink ID="HyperLink1" runat="server" 
-                            NavigateUrl='<%# "Details?Id=" + Item.Id %>'>
-                            <%#: Item.Title.Length > 30 ? Item.Title.Substring(0, 30) + "..." : Item.Title %>     
-                        </asp:HyperLink>
+                        <%#: Item.Title.Length > 30 ? Item.Title.Substring(0, 30) + "..." : Item.Title %>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -64,8 +61,20 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Rating" DataField="CurrentRating" DataFormatString="{0:F2}" SortExpression="CurrentRating" />
+                <asp:TemplateField>
+                    <HeaderTemplate>
+                        <div class="text-center">Action</div>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <div class="text-center">
+                            <asp:HyperLink ID="HyperLink1"
+                                runat="server" CssClass="btn btn-primary" Text="View"
+                                NavigateUrl='<%# "Details?Id=" + Item.Id %>'>
+                            </asp:HyperLink>
+                        </div>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
-
         </asp:GridView>
     </div>
 </asp:Content>

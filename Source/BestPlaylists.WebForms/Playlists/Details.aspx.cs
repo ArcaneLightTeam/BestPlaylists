@@ -23,9 +23,9 @@ namespace BestPlaylists.WebForms.Playlists
             {
                 var playlist = this.Playlists.GetById(id);
 
-                this.plTitle.InnerText = Server.HtmlDecode(playlist.Title);
-                this.plDescription.InnerText = Server.HtmlDecode(playlist.Description);
-                this.repeaterVideos.DataSource = GetUrlsFromVideo(playlist.Videos); //playlist.Videos;
+                this.plTitle.InnerText = this.Server.HtmlDecode(playlist.Title);
+                this.plDescription.InnerText = this.Server.HtmlDecode(playlist.Description);
+                this.repeaterVideos.DataSource = this.GetUrlsFromVideo(playlist.Videos); //playlist.Videos;
                 this.videoCount.InnerText = playlist.Videos.Count().ToString();
                 this.plRating.InnerText = playlist.CurrentRating.ToString("F2");
 
@@ -36,7 +36,15 @@ namespace BestPlaylists.WebForms.Playlists
                 var userId = this.User.Identity.GetUserId();
                 if (userId != null && playlist.Ratings.All(u => u.UserId != userId))
                 {
-                    string[] arrayOfRating = { "0", "1", "2", "3", "4", "5" };
+                    object[] arrayOfRating =
+                        {
+                            new {Name = "Select rating", Value = "0"},
+                            new {Name = "1", Value = "1"},
+                            new {Name = "2", Value = "2"},
+                            new {Name = "3", Value = "3"},
+                            new {Name = "4", Value = "4"},
+                            new {Name = "5", Value = "5"},
+                        };
                     this.Rating.DataSource = arrayOfRating;
                 }
                 else
@@ -49,7 +57,7 @@ namespace BestPlaylists.WebForms.Playlists
                     this.btnEdit.Visible = false;
                 }
 
-                DataBind();
+                this.DataBind();
             }
         }
 
@@ -75,10 +83,12 @@ namespace BestPlaylists.WebForms.Playlists
                     playlist.Ratings.Add(rating);
 
                     playlist.CurrentRating = playlist.Ratings.Average(r => r.Value);
-
+                    
                     this.Playlists.Update(playlist);
 
                     this.Rating.Visible = false;
+
+                    this.plRating.InnerText = playlist.CurrentRating.ToString("F2");
                 }
             }
         }

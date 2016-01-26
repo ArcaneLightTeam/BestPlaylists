@@ -82,7 +82,7 @@
             <hr />
             <footer>
                 <p class="text-center">&copy; 2016 - Arcane Light Team</p>
-                <div class="clear hideSkiplink">
+                <div class="">
                     <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
                     <asp:Menu ID="NavigationMenu" runat="server" SkipLinkText=""
                         EnableViewState="False" IncludeStyleBlock="True" Orientation="Horizontal"

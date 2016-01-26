@@ -18,7 +18,7 @@ namespace BestPlaylists.WebForms.Playlists
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!this.Page.IsPostBack)
             {
                 this.ddlCategory.DataSource = this.Categories.GetAll().ToList();
                 this.ddlCategory.DataBind();
@@ -27,7 +27,7 @@ namespace BestPlaylists.WebForms.Playlists
 
         public IQueryable<Playlist> ListViewPlaylists_GetData()
         {
-            var filter = ViewState["Filter"];
+            var filter = this.ViewState["Filter"];
 
             if (filter != null && int.Parse(filter.ToString()) != -1)
             {
@@ -48,9 +48,9 @@ namespace BestPlaylists.WebForms.Playlists
                 id = int.Parse(ddl.SelectedValue);
             }
 
-            ViewState["Filter"] = id;
-            ListViewPlaylists_GetData();
-            gvPlayLists.DataBind();
+            this.ViewState["Filter"] = id;
+            this.ListViewPlaylists_GetData();
+            this.gvPlayLists.DataBind();
         }
     }
 }
