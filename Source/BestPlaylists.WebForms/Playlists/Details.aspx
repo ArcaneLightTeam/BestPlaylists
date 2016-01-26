@@ -8,7 +8,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div class="row">
-        <h1 class="title">Details</h1>
+        <h1 class="title">Playlist details:</h1>
 
         <%-- TODO: Misho Place your edit url here --%>
         <div class="pull-right">
@@ -48,7 +48,9 @@
                 OnSelectedIndexChanged="Rating_OnSelectedIndexChanged"
                 AutoPostBack="True"
                 AppendDataBoundItems="True"
-                CssClass="form-control" />
+                CssClass="form-control" 
+                DataTextField="Name"
+                DataValueField="Value"/>
         </div>
     </div>
     <div class="row">

@@ -55,6 +55,7 @@
                                 <li><a runat="server" href="~/Playlists/Create">Create Playlist</a></li>
                             </LoggedInTemplate>
                         </asp:LoginView>
+                        <li><a runat="server" href="~/Admin/AdminPanel" id="admin">Admin Panel</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -65,7 +66,6 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><asp:HyperLink runat="server" NavigateUrl="~/Admin/Categories" Visible="true">Edit Categories</asp:HyperLink></li>
                                 <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: this.Context.User.Identity.GetUserName()  %> !</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
@@ -82,7 +82,7 @@
             <hr />
             <footer>
                 <p class="text-center">&copy; 2016 - Arcane Light Team</p>
-                <div class="clear hideSkiplink">
+                <div class="">
                     <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
                     <asp:Menu ID="NavigationMenu" runat="server" SkipLinkText=""
                         EnableViewState="False" IncludeStyleBlock="True" Orientation="Horizontal"

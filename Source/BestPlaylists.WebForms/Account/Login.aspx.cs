@@ -20,6 +20,7 @@
             if (!String.IsNullOrEmpty(returnUrl))
             {
                 this.RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
+                this.Response.Redirect("~/UnauthorizedAccess.aspx");
             }
         }
 

@@ -71,7 +71,7 @@
             }
             else
             {
-                usernames = this.UserService.All().Select(x => x.UserName.ToLower()).ToList();
+                usernames = this.UserService.GetAll().Select(x => x.UserName.ToLower()).ToList();
                 this.ViewState[SiteConstants.CachedUsersKey] = string.Join(" ", usernames);
             }
 

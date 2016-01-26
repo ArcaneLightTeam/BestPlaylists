@@ -1,14 +1,10 @@
-﻿using System;
-namespace BestPlaylists.WebForms.Admin
+﻿namespace BestPlaylists.WebForms.Admin
 {
+    using System;
     using System.Linq;
-    using System.Security.Claims;
-    using System.Web.Security;
 
     using BestPlaylists.Data.Models;
     using BestPlaylists.Services.Data.Contracts;
-
-    using Microsoft.Ajax.Utilities;
 
     using Ninject;
 

@@ -94,7 +94,7 @@
                 </label>
             </div>
             <div class="pt-20">
-                <asp:Button ID="btnAddPlaylist" runat="server" Text="Add Playlist" OnClick="BtnAddPlaylist_Click" CssClass="btn btn-success" />
+                <asp:Button ID="btnAddPlaylist" runat="server" Text="Create Playlist" OnClick="BtnAddPlaylist_Click" CssClass="btn btn-primary col-md-4" />
             </div>
         </div>
     </div>
