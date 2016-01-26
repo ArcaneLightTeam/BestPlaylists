@@ -190,6 +190,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Account\YourPlaylists.aspx" />
     <Content Include="Admin\AdminPanel.aspx" />
     <Content Include="Admin\Categories.aspx" />
     <Content Include="Admin\Users.aspx" />
@@ -215,12 +216,13 @@
     <Content Include="Images\default.jpg" />
     <Content Include="Images\playlist-main.png" />
     <Content Include="NotFound.aspx" />
-    <Content Include="Images\error-icon.png" />
+  	<Content Include="Images\error-icon.png" />
     <Content Include="Images\info-icon.png" />
     <Content Include="Images\success-icon.png" />
     <Content Include="Images\warning-icon.png" />
     <Content Include="Playlists\Create.aspx" />
     <Content Include="Playlists\Details.aspx" />
+    <Content Include="Playlists\Edit.aspx" />
     <Content Include="Playlists\Show.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -385,6 +387,13 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\YourPlaylists.aspx.cs">
+      <DependentUpon>YourPlaylists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\YourPlaylists.aspx.designer.cs">
+      <DependentUpon>YourPlaylists.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminPanel.aspx.cs">
       <DependentUpon>AdminPanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -451,6 +460,13 @@
     </Compile>
     <Compile Include="Playlists\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Playlists\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Playlists\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Playlists\Show.aspx.cs">
       <DependentUpon>Show.aspx</DependentUpon>
