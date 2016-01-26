@@ -12,7 +12,7 @@
 
         <%-- TODO: Misho Place your edit url here --%>
         <div class="pull-right">
-            <a runat="server" id="btnEdit" href="#" class="btn btn-primary">Edit Playlist</a>    
+            <a runat="server" id="btnEdit" href=' <%# "Edit?id=" + this.Request.Params["id"] %>' class="btn btn-primary">Edit Playlist</a>    
         </div>
     </div>
     <div class="row">
