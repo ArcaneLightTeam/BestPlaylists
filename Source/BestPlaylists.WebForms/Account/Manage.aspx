@@ -19,14 +19,14 @@
                 <dl class="dl-horizontal">
                     <dt>Your playlists:</dt>
                     <dd>
-                        <asp:HyperLink NavigateUrl="/Account/YourPlaylists" Text="Playlists" CssClass="btn btn-default" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/YourPlaylists" Text="Playlists" CssClass="btn btn-default col-md-1" runat="server" />
                     </dd>
                     <br />
 
                     <dt>Password:</dt>
                     <dd>
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Change" CssClass="btn btn-primary" Visible="false" ID="ChangePassword" runat="server" />
-                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Create" CssClass="btn btn-primary" Visible="false" ID="CreatePassword" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Change" CssClass="btn btn-primary col-md-1" Visible="false" ID="ChangePassword" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="Create" CssClass="btn btn-primary col-md-1" Visible="false" ID="CreatePassword" runat="server" />
                     </dd>
                     <br />
                     
@@ -38,7 +38,7 @@
                     
                     <dt>Edit profile:</dt>
                     <dd>
-                        <asp:HyperLink NavigateUrl="/Account/EditProfile"  CssClass="btn btn-primary" Text="Edit" runat="server" />
+                        <asp:HyperLink NavigateUrl="/Account/EditProfile"  CssClass="btn btn-primary col-md-1" Text="Edit" runat="server" />
                     </dd>
                     <%--
                         Phone Numbers can used as a second factor of verification in a two-factor authentication system.

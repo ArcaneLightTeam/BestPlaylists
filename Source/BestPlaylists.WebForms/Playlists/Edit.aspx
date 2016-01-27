@@ -94,14 +94,16 @@
                     </label>
                 </div>
                 <div class="pt-20">
-                    <asp:Button runat="server" ID="deletePlaylist"
-                        Text="Delete"
-                        CssClass="btn btn-danger"
-                        OnClick="DeletePlaylist_Click" />
-                    <asp:Button ID="btnAddPlaylist" runat="server"
-                        Text="Update"
-                        OnClick="BtnUpdatePlaylist_Click"
-                        CssClass="btn btn-primary pull-right" />
+                    <div class="btn-group col-sm-6">
+                        <asp:Button runat="server" ID="deletePlaylist"
+                            Text="Delete"
+                            CssClass="btn btn-danger"
+                            OnClick="DeletePlaylist_Click" />
+                        <asp:Button ID="btnAddPlaylist" runat="server"
+                            Text="Update"
+                            OnClick="BtnUpdatePlaylist_Click"
+                            CssClass="btn btn-primary" />
+                    </div>
                 </div>
             </div>
 
@@ -136,16 +138,16 @@
                             Side="Left"
                             EventName="Click"
                             AssociatedControlId="btnPreview" />
-                            <asp:UpdatePanel ID="updateButtonText" UpdateMode="Conditional" runat="server">
-                                <Triggers>
-                                    <asp:PostBackTrigger ControlID="btnAddVideo"  />
-                                </Triggers>
-                                <ContentTemplate>
-                        <div class="input-group">
-                            <asp:TextBox ID="tbAddVideo" runat="server"
-                                Placeholder="https://www.youtube.com/watch?v=Ebbkkfp-YBk"
-                                CssClass="form-control search-query"
-                                Width="300" />
+                        <asp:UpdatePanel ID="updateButtonText" UpdateMode="Conditional" runat="server">
+                            <Triggers>
+                                <asp:PostBackTrigger ControlID="btnAddVideo" />
+                            </Triggers>
+                            <ContentTemplate>
+                                <div class="input-group">
+                                    <asp:TextBox ID="tbAddVideo" runat="server"
+                                        Placeholder="https://www.youtube.com/watch?v=Ebbkkfp-YBk"
+                                        CssClass="form-control search-query"
+                                        Width="300" />
                                     <span class="input-group-btn">
                                         <asp:Button Text="Add" ID="btnAddVideo" CssClass="btn btn-success" runat="server" OnClick="AddVideo_Click" />
                                         <asp:Button Text="Preview" ID="btnPreview" runat="server"
@@ -153,19 +155,19 @@
                                             OnClick="PreviewVideo_Click"
                                             CssClass="btn btn-default" />
                                     </span>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-
-                        <asp:RegularExpressionValidator ID="revYouTubeUrl"
-                            ControlToValidate="tbAddVideo"
-                            CssClass="text-danger"
-                            Width="300"
-                            ValidationExpression="(https?:\/\/.*?youtube\.com)\/watch\?v=(.*)"
-                            ErrorMessage="Url Should match https://www.youtube.com/watch?v="
-                            runat="server" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
+
+                    <asp:RegularExpressionValidator ID="revYouTubeUrl"
+                        ControlToValidate="tbAddVideo"
+                        CssClass="text-danger"
+                        Width="300"
+                        ValidationExpression="(https?:\/\/.*?youtube\.com)\/watch\?v=(.*)"
+                        ErrorMessage="Url Should match https://www.youtube.com/watch?v="
+                        runat="server" />
                 </div>
             </div>
+        </div>
     </asp:Panel>
 </asp:Content>

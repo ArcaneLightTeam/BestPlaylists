@@ -13,7 +13,7 @@
                     <h4>Set Password Form</h4>
                     <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                     <hr />
-                    <div class="form-group">
+                    <div class="form-group col-md-8">
                         <asp:Label runat="server" AssociatedControlID="password" CssClass="col-md-2 control-label">Password</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="password" TextMode="Password" CssClass="form-control" />
@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-8">
                         <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" CssClass="form-control" />
@@ -38,7 +38,7 @@
 
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-8">
                         <div class="col-md-offset-2 col-md-10">
                             <asp:Button runat="server" Text="Set Password" ValidationGroup="SetPassword" OnClick="SetPassword_Click" CssClass="btn btn-default" />
                         </div>
@@ -51,7 +51,7 @@
                     <h4>Change Password Form</h4>
                     <hr />
                     <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
-                    <div class="form-group">
+                    <div class="form-group col-md-8">
                         <asp:Label runat="server" ID="CurrentPasswordLabel" AssociatedControlID="CurrentPassword" CssClass="col-md-2 control-label">Current password</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="CurrentPassword" TextMode="Password" CssClass="form-control" />
@@ -60,7 +60,7 @@
                                 ValidationGroup="ChangePassword" />
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-8">
                         <asp:Label runat="server" ID="NewPasswordLabel" AssociatedControlID="NewPassword" CssClass="col-md-2 control-label">New password</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="NewPassword" TextMode="Password" CssClass="form-control" />
@@ -69,7 +69,7 @@
                                 ValidationGroup="ChangePassword" />
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-8">
                         <asp:Label runat="server" ID="ConfirmNewPasswordLabel" AssociatedControlID="ConfirmNewPassword" CssClass="col-md-2 control-label">Confirm new password</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="ConfirmNewPassword" TextMode="Password" CssClass="form-control" />

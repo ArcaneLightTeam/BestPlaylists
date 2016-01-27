@@ -36,10 +36,10 @@
                     <%--<SortedAscendingCellStyle CssClass="ascending" />--%>
                     <PagerStyle CssClass="paging" />
                     <EmptyDataTemplate>
-                        <div class="alert alert-dismissible alert-info">
+                        <div class="alert alert-dismissible">
                             <p>
-                                You haven't any playlists. Do you want to add playlist on this 
-                                <a href="/Playlists/Create" class="alert-link">Page</a>.
+                                You do not have any playlists yet. You can create one on the following
+                                <a href="/Playlists/Create" class="alert-link">page</a>.
                             </p>
                         </div>
                     </EmptyDataTemplate>
@@ -74,12 +74,12 @@
 
                         <asp:TemplateField HeaderText="More">
                             <ItemTemplate>
-                                <asp:HyperLink CssClass="btn btn-default" ID="HyperLink1" runat="server"
+                                <asp:HyperLink CssClass="btn btn-default col-sm-6" ID="HyperLink1" runat="server"
                                     NavigateUrl='<%# "/Playlists/Details?Id=" +  Item.Id %>'>
                                     Details     
                                 </asp:HyperLink>
 
-                                <asp:HyperLink CssClass="btn btn-primary" ID="HyperLink2" runat="server"
+                                <asp:HyperLink CssClass="btn btn-primary col-sm-6" ID="HyperLink2" runat="server"
                                     NavigateUrl='<%# "/Playlists/Edit?Id=" +  Item.Id %>'>
                                     Edit     
                                 </asp:HyperLink>

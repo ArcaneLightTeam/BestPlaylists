@@ -9,10 +9,8 @@
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div class="row">
         <h1 class="title">Playlist details:</h1>
-
-        <%-- TODO: Misho Place your edit url here --%>
-        <div class="pull-right">
-            <a runat="server" id="btnEdit" href=' <%# "Edit?id=" + this.Request.Params["id"] %>' class="btn btn-primary">Edit Playlist</a>    
+        <div class="pull-left">
+            <a runat="server" id="btnEdit" href=' <%# "Edit?id=" + this.Request.Params["id"] %>' class="btn btn-primary">Edit Playlist</a>
         </div>
     </div>
     <div class="row">
@@ -45,13 +43,13 @@
         <div class="col-md-6">
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
-            <h2>Rating: <strong runat="server" id="plRating"></strong></h2>
-            <asp:DropDownList runat="server" ID="Rating"
-                OnSelectedIndexChanged="Rating_OnSelectedIndexChanged"
-                AutoPostBack="True"
-                AppendDataBoundItems="True"
-                CssClass="form-control" 
-                DataTextField="Name"
+                    <h2>Rating: <strong runat="server" id="plRating"></strong></h2>
+                    <asp:DropDownList runat="server" ID="Rating"
+                        OnSelectedIndexChanged="Rating_OnSelectedIndexChanged"
+                        AutoPostBack="True"
+                        AppendDataBoundItems="True"
+                        CssClass="form-control"
+                        DataTextField="Name"
                         DataValueField="Value" />
                 </ContentTemplate>
             </asp:UpdatePanel>
