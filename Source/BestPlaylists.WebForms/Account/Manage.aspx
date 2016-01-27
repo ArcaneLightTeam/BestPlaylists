@@ -136,7 +136,8 @@
                                     <strong>Youtube account:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:HyperLink NavigateUrl="<%#: Item.YouTubeAccount %>" runat="server" Text="Link" />
+                                    <asp:HyperLink NavigateUrl="<%#: Item.YouTubeAccount %>" runat="server" 
+                                        Text='<%# string.IsNullOrEmpty(Item.YouTubeAccount)? "Not provided" : "Link" %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -145,7 +146,8 @@
                                     <strong>Facebook account:</strong>        
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:HyperLink NavigateUrl="<%#: Item.FacebookAccount %>" runat="server" Text="Link" />
+                                    <asp:HyperLink NavigateUrl="<%#: Item.FacebookAccount %>" runat="server"
+                                         Text='<%# string.IsNullOrEmpty(Item.FacebookAccount)? "Not provided" : "Link" %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
