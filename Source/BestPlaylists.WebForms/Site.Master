@@ -85,6 +85,7 @@
                     DataSourceID="SiteMapDataSource"
                     StaticDisplayLevels="2"
                     RenderingMode="Default"
+                    CssClass="navbar"
                     StaticEnableDefaultPopOutImage="False"
                     DynamicHorizontalOffset="10">
                 </asp:Menu>
@@ -92,7 +93,7 @@
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
             <footer>
                 <p class="text-center">&copy; 2016 - Arcane Light Team</p>
-             </footer>
+            </footer>
         </div>
     </form>
 </body>

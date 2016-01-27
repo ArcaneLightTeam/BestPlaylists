@@ -15,7 +15,7 @@
                             <asp:LinkButton Text="Firstname" runat="server" ID="LinkButtonSortByFirstname" CommandName="Sort" CommandArgument="FirstName" />
                         </th>
                         <th class="text-center">
-                            <asp:LinkButton Text="Firstname" runat="server" ID="LinkButtonSortByLastname" CommandName="Sort" CommandArgument="LastName" />
+                            <asp:LinkButton Text="Lastname" runat="server" ID="LinkButtonSortByLastname" CommandName="Sort" CommandArgument="LastName" />
                         </th>
                         <th class="text-center">
                             <asp:LinkButton Text="E-mail" runat="server" ID="LinkButtonSortByLastEmail" CommandName="Sort" CommandArgument="Email" />
