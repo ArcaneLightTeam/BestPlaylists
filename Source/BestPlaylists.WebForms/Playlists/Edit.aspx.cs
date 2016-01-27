@@ -11,7 +11,7 @@
     using BestPlaylists.Services.Data.Contracts;
     using Microsoft.AspNet.Identity;
     using Ninject;
-
+    using UserControls;
     public partial class Edit : Page
     {
         private const string Id = "id";
@@ -130,6 +130,12 @@
             this.videosRepeater.DataBind();
 
             this.videoCount.InnerText = playlistDetails.Videos.Count.ToString();
+        }
+
+        protected void tbAddVideo_TextChanged(object sender, EventArgs e)
+        {
+            YouTubePreview myControl = this.editPlaylistPanel.FindControl("yt") as YouTubePreview;
+            myControl.TbUrlInput_TextChanged(sender, e);
         }
     }
 }
