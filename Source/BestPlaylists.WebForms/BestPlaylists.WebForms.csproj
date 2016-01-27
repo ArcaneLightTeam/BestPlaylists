@@ -259,6 +259,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="UnauthorizedAccess.aspx" />
+    <Content Include="UserControls\YouTubePreview.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
@@ -497,6 +498,14 @@
     </Compile>
     <Compile Include="UnauthorizedAccess.aspx.designer.cs">
       <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Side.cs" />
+    <Compile Include="UserControls\YouTubePreview.ascx.cs">
+      <DependentUpon>YouTubePreview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\YouTubePreview.ascx.designer.cs">
+      <DependentUpon>YouTubePreview.ascx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Edit Playlist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="BestPlaylists.WebForms.Playlists.Edit" %>
 
+<%@ Register TagName="VideoPreview" TagPrefix="youtube" Src="~/UserControls/YouTubePreview.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <asp:Panel ID="playlistNotFoundPanel" runat="server"
@@ -129,11 +131,12 @@
                 <div>
                     <div class="form-group">
                         <label class="label-control" for="tbAddVideo">Add video</label>
+                        <youtube:VideoPreview runat="server" Distance="300" ID="yt" Side="Top" AssociatedControlId="tbAddVideo"/>
                         <div class="input-group">
-                            <asp:TextBox ID="tbAddVideo" runat="server"
+                            <asp:TextBox ID="tbAddVideo" AutoPostBack="True" runat="server"
                                 Placeholder="https://www.youtube.com/watch?v=Ebbkkfp-YBk"
                                 CssClass="form-control search-query"
-                                Width="300" />
+                                Width="300" OnTextChanged="tbAddVideo_TextChanged" />
                             <span class="input-group-btn">
                                 <asp:Button Text="Add" CssClass="btn btn-success" runat="server" OnClick="AddVideo_Click" />
                             </span>

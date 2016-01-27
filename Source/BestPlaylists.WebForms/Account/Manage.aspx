@@ -100,7 +100,7 @@
                                    <strong>Profile Image:</strong>    
                                 </HeaderTemplate>
                                 <ItemTemplate >
-                                    <img src="<%#: Item.AvatarUrl %>" Width="250" alt="Avatar" class="img-thumbnail" />
+                                    <img src="<%#: string.IsNullOrEmpty(Item.AvatarUrl)? "/Images/default.jpg": Item.AvatarUrl %>" Width="250" alt="Avatar" class="img-thumbnail" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                              

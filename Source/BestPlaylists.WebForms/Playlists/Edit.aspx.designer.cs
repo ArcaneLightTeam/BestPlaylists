@@ -130,6 +130,15 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.Repeater videosRepeater;
         
         /// <summary>
+        /// yt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::BestPlaylists.WebForms.UserControls.YouTubePreview yt;
+        
+        /// <summary>
         /// tbAddVideo control.
         /// </summary>
         /// <remarks>

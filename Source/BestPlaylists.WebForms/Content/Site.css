@@ -80,3 +80,124 @@ input[type="select"] {
     padding: 20px 0;
     overflow-y: scroll;
 }
+
+.animation {
+    position: absolute;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1; /* Chrome, Safari, Opera */
+   
+    -webkit-animation-duration: 1.6s; /* Chrome, Safari, Opera */
+    -moz-animation-duration: 1.6s;
+    -o-animation-duration: 1.6s;
+    animation-duration: 1.6s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: ease;
+    -moz-animation-timing-function: ease;
+    -o-animation-timing-function: ease;
+    animation-timing-function: ease;
+}
+
+.slide-to-right {
+    -webkit-animation-name: right-slide; /* Chrome, Safari, Opera */
+    -moz-animation-name: right-slide;
+    -o-animation-name: right-slide;
+    animation-name: right-slide;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes right-slide {
+    0%   { opacity: 0.0; left:0}
+    100% { opacity: 1.0; left:350px;}
+}
+
+/* Firefox */
+@-moz-keyframes right-slide {
+    0%   { opacity: 0.0; left:0}
+    100% { opacity: 1.0; left:350px;}
+}
+
+/* Standard syntax */
+@keyframes right-slide {
+    0%   { opacity: 0.0; left:0}
+    100% { opacity: 1.0; left:350px;}
+}
+
+.slide-to-left {
+    -webkit-animation-name: left-slide; /* Chrome, Safari, Opera */
+    -moz-animation-name: left-slide;
+    -o-animation-name: left-slide;
+    animation-name: left-slide;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes left-slide {
+    0%   { opacity: 0.0; right:0}
+    100% { opacity: 1.0; right:350px;}
+}
+
+/* Firefox */
+@-moz-keyframes left-slide {
+    0%   { opacity: 0.0; right:0}
+    100% { opacity: 1.0; right:350px;}
+}
+
+/* Standard syntax */
+@keyframes left-slide {
+    0%   { opacity: 0.0; right:0}
+    100% { opacity: 1.0; right:350px;}
+}
+
+.slide-to-top {
+    -webkit-animation-name: top-slide; /* Chrome, Safari, Opera */
+    -moz-animation-name: top-slide;
+    -o-animation-name: top-slide;
+    animation-name: top-slide;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes top-slide {
+    0%   { opacity: 0.0; bottom:0}
+    100% { opacity: 1.0; bottom:120px;}
+}
+
+/* Firefox */
+@-moz-keyframes top-slide {
+    0%   { opacity: 0.0; bottom:0}
+    100% { opacity: 1.0; bottom:120px;}
+}
+
+/* Standard syntax */
+@keyframes top-slide {
+    0%   { opacity: 0.0; bottom:0}
+    100% { opacity: 1.0; bottom:120px;}
+}
+
+.slide-to-bottom {
+    -webkit-animation-name: bottom-slide; /* Chrome, Safari, Opera */
+    -moz-animation-name: bottom-slide;
+    -o-animation-name: bottom-slide;
+    animation-name: bottom-slide;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes bottom-slide {
+    0%   { opacity: 0.0; bottom:0}
+    100% { opacity: 1.0; bottom:-120px;}
+}
+
+/* Firefox */
+@-moz-keyframes bottom-slide {
+    0%   { opacity: 0.0; bottom:0}
+    100% { opacity: 1.0; bottom:-120px;}
+}
+
+/* Standard syntax */
+@keyframes bottom-slide {
+    0%   { opacity: 0.0; bottom:0}
+    100% { opacity: 1.0; bottom:-120px;}
+}
