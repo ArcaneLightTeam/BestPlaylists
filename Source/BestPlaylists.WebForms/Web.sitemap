@@ -1,7 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="" title=""  description="">
-    <siteMapNode url="~/Default.aspx" title="Home"  description="Default page!" />
-    <siteMapNode url="~/Playlists/Show.aspx" title="Playlists"  description="About page" />
+
+    <siteMapNode title="Playlists" description="Playlists">
+      <siteMapNode title="Show all playlists" description="Show all playlists" url="~/Playlists/Show"/>
+      <siteMapNode title="Create a playlists" description="Create a playlists" url="~/Playlists/Create"/>
+    </siteMapNode>
+
+    <siteMapNode title="Site administration" description="Site administration">
+      <siteMapNode title="Admin Panel" description="Admin Panel" url="~/Admin/AdminPanel"/>
+      <siteMapNode title="Categories administration" description="Categories administration" url="~/Admin/Categories"/>
+      <siteMapNode title="Users administration" description="Users administration" url="~/Admin/Users"/>
+    </siteMapNode>
+
+    <siteMapNode title="Account management" description="Account management">
+      <siteMapNode title="Register new user" description="Register new user" url="~/Account/Register"/>
+      <siteMapNode title="Login with existing user" description="Login with existing user" url="~/Account/Login"/>
+    </siteMapNode>
+
   </siteMapNode>
 </siteMap>
