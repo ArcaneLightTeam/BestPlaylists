@@ -31,6 +31,24 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.TextBox SearchTextBox;
         
         /// <summary>
+        /// SearchResultHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SearchResultHeader;
+        
+        /// <summary>
+        /// SearchResultWord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SearchResultWord;
+        
+        /// <summary>
         /// gvPlayLists control.
         /// </summary>
         /// <remarks>

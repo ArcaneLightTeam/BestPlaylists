@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Security.Policy;
     using System.Web.UI;
     using System.Web.UI.WebControls;
     using BestPlaylists.Data.Models;
@@ -33,23 +34,32 @@
 
             var search = this.Request.QueryString["search"];
 
-            if (currentCategory != null)
+            int categoryNumber;
+            int categoryFilterId;
+
+            if (currentCategory != null && int.TryParse(currentCategory, out categoryNumber))
             {
-                this.ddlCategory.SelectedIndex = int.Parse(currentCategory);
+                this.ddlCategory.SelectedIndex = categoryNumber;
             }
 
             IQueryable<Playlist> data = this.Playlists.GetAll();
 
-            if (categoryFilter != null && int.Parse(categoryFilter) != -1)
+            if (categoryFilter != null && int.TryParse(categoryFilter, out categoryFilterId) && categoryFilterId != -1)
             {
-                var id = int.Parse(categoryFilter.ToString());
-                data = data.Where(p => p.CategoryId == id);
+                data = data.Where(p => p.CategoryId == categoryFilterId);
             }
 
-            if (search != null && search.ToString().Length > 0)
+            if (!string.IsNullOrEmpty(search))
             {
-                var searchTitle = search.ToString();
+                var searchTitle = search;
                 data = data.Where(p => p.Title.Contains(searchTitle));
+                this.SearchResultWord.InnerText = this.Server.HtmlDecode(search);
+                this.SearchResultHeader.Visible = true;
+            }
+            else
+            {
+                this.SearchResultWord.InnerText = "";
+                this.SearchResultHeader.Visible = false;
             }
 
             return data;

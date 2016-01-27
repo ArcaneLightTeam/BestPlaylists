@@ -40,7 +40,7 @@
                 <td class="col-md-3"><%#: Item.LastName %></td>
                 <td class="col-md-2"><%#: Item.Email %></td>
                 <td class="text-center col-md-2">
-                    <asp:LinkButton runat="server" ID="LinkButtonEdit" Text="Edit" CommandName="Edit" CssClass="btn btn-primary" />
+                    <asp:LinkButton runat="server" ID="LinkButtonEdit" Text="Edit" CommandName="Edit" CssClass="btn btn-primary col-sm-offset-3 col-sm-6" />
                 </td>
             </tr>
         </ItemTemplate>
@@ -59,8 +59,8 @@
                     <asp:TextBox runat="server" ID="TextBoxEmail" Text="<%#: BindItem.Email %>" CssClass="col-md-12" />
                 </td>
                 <td class="text-center">
-                    <asp:LinkButton runat="server" ID="LinkButton1" Text="Save" CommandName="Update" CssClass="btn btn-success" />
-                    <asp:LinkButton runat="server" ID="LinkButton2" Text="Cancel" CommandName="Cancel" CssClass="btn btn-primary" />
+                    <asp:LinkButton runat="server" ID="LinkButton1" Text="Save" CommandName="Update" CssClass="btn btn-success col-sm-6" />
+                    <asp:LinkButton runat="server" ID="LinkButton2" Text="Cancel" CommandName="Cancel" CssClass="btn btn-primary col-sm-6" />
                 </td>
             </tr>
         </EditItemTemplate>

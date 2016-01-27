@@ -35,6 +35,7 @@
                 <asp:Button runat="server" CssClass="btn btn-default col-md-2" OnClick="Filter" Text="Search"></asp:Button>
             </div>
         </div>
+        <h3 runat="server" ID="SearchResultHeader" class="text-center">Showing results for <strong runat="server" ID="SearchResultWord"></strong></h3>
         <asp:GridView runat="server" ID="gvPlayLists"
             ItemType="BestPlaylists.Data.Models.Playlist"
             DataKeyNames="Id"
