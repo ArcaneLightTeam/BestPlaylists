@@ -18,7 +18,7 @@ body {
     white-space: normal;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
+/* Set widths on the form inputs since otherwise they're 100% wide :@!!!!!! */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -200,4 +200,15 @@ input[type="select"] {
 @keyframes bottom-slide {
     0%   { opacity: 0.0; bottom:0}
     100% { opacity: 1.0; bottom:-120px;}
+}
+
+.videos-container {
+    height: 500px; 
+    overflow-y: scroll;
+     overflow-x: hidden; 
+     padding: 0 15%
+}
+
+.videos-container div.row {
+    margin-bottom: 2%;
 }

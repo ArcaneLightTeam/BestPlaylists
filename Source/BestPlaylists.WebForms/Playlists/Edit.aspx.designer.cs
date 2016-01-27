@@ -103,6 +103,15 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.CheckBox cbPrivate;
         
         /// <summary>
+        /// deletePlaylist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button deletePlaylist;
+        
+        /// <summary>
         /// btnAddPlaylist control.
         /// </summary>
         /// <remarks>
@@ -130,13 +139,22 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.Repeater videosRepeater;
         
         /// <summary>
-        /// yt control.
+        /// ytPreview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BestPlaylists.WebForms.UserControls.YouTubePreview yt;
+        protected global::BestPlaylists.WebForms.UserControls.YouTubePreview ytPreview;
+        
+        /// <summary>
+        /// updateButtonText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updateButtonText;
         
         /// <summary>
         /// tbAddVideo control.
@@ -148,6 +166,24 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.TextBox tbAddVideo;
         
         /// <summary>
+        /// btnAddVideo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddVideo;
+        
+        /// <summary>
+        /// btnPreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPreview;
+        
+        /// <summary>
         /// revYouTubeUrl control.
         /// </summary>
         /// <remarks>
@@ -155,14 +191,5 @@ namespace BestPlaylists.WebForms.Playlists {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revYouTubeUrl;
-        
-        /// <summary>
-        /// deletePlaylist control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deletePlaylist;
     }
 }
