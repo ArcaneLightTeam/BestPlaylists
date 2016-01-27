@@ -80,17 +80,19 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
+            <div>
+                <asp:Menu ID="NavigationMenu" runat="server" SkipLinkText=""
+                    DataSourceID="SiteMapDataSource"
+                    StaticDisplayLevels="2"
+                    RenderingMode="Default"
+                    StaticEnableDefaultPopOutImage="False"
+                    DynamicHorizontalOffset="10">
+                </asp:Menu>
+            </div>
+            <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
             <footer>
                 <p class="text-center">&copy; 2016 - Arcane Light Team</p>
-                <div class="">
-                    <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
-                    <asp:Menu ID="NavigationMenu" runat="server" SkipLinkText=""
-                        EnableViewState="False" IncludeStyleBlock="True" Orientation="Horizontal"
-                        DataSourceID="SiteMapDataSource" StaticDisplayLevels="2">
-                    </asp:Menu>
-                    <asp:SiteMapPath ID="SiteMapPathBreadcrump" runat="server" />
-                </div>
-            </footer>
+             </footer>
         </div>
     </form>
 </body>
