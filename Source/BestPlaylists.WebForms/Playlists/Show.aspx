@@ -8,7 +8,6 @@
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div class="playlists">
         <h1 class="title">All Playlists</h1>
-
         <div class="row">
             <div class="form-group col-md-6">
                 <label class="control-label col-md-3" for="">Select Category</label>
@@ -17,9 +16,8 @@
                         ID="ddlCategory"
                         DataTextField="Name"
                         DataValueField="Id"
-                        OnSelectedIndexChanged="CategoryChanged"
-                        AutoPostBack="True"
                         AppendDataBoundItems="True"
+                        EnableViewState="True"
                         CssClass="form-control">
                         <asp:ListItem Text="All Categories" Value="-1" />
                     </asp:DropDownList>
@@ -34,10 +32,9 @@
                         CssClass="form-control">
                     </asp:TextBox>
                 </div>
-                <asp:Button runat="server" CssClass="btn btn-default col-md-2" Text="Search" OnClick="SearchTitle" />
+                <asp:Button runat="server" CssClass="btn btn-default col-md-2" OnClick="Filter" Text="Search"></asp:Button>
             </div>
         </div>
-
         <asp:GridView runat="server" ID="gvPlayLists"
             ItemType="BestPlaylists.Data.Models.Playlist"
             DataKeyNames="Id"

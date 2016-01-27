@@ -27,55 +27,38 @@
 
         public IQueryable<Playlist> ListViewPlaylists_GetData()
         {
-            var filter = this.ViewState["Filter"];
+            var currentCategory = this.Request.QueryString["cat"];
 
-            var search = this.ViewState["Search"];
+            var categoryFilter = this.Request.QueryString["filter"];
+
+            var search = this.Request.QueryString["search"];
+
+            if (currentCategory != null)
+            {
+                this.ddlCategory.SelectedIndex = int.Parse(currentCategory);
+            }
 
             IQueryable<Playlist> data = this.Playlists.GetAll();
 
-            if (filter != null && int.Parse(filter.ToString()) != -1)
+            if (categoryFilter != null && int.Parse(categoryFilter) != -1)
             {
-                var id = int.Parse(filter.ToString());
+                var id = int.Parse(categoryFilter.ToString());
                 data = data.Where(p => p.CategoryId == id);
             }
 
             if (search != null && search.ToString().Length > 0)
             {
                 var searchTitle = search.ToString();
-               data = data.Where(p => p.Title.Contains(searchTitle));
+                data = data.Where(p => p.Title.Contains(searchTitle));
             }
 
             return data;
         }
 
-        protected void CategoryChanged(object sender, EventArgs e)
+        protected void Filter(object sender, EventArgs e)
         {
-            var ddl = sender as DropDownList;
-            var id = -1;
 
-            if (ddl != null)
-            {
-                id = int.Parse(ddl.SelectedValue);
-            }
-
-            this.ViewState["Filter"] = id;
-            this.ListViewPlaylists_GetData();
-            this.gvPlayLists.DataBind();
-        }
-
-        protected void SearchTitle(object sender, EventArgs e)
-        {
-            var searchBox = this.SearchTextBox;
-            var searchTitle = "";
-
-            if (searchBox != null)
-            {
-                searchTitle = searchBox.Text;
-            }
-
-            this.ViewState["Search"] = searchTitle;
-            this.ListViewPlaylists_GetData();
-            this.gvPlayLists.DataBind();
+            this.Response.Redirect("/Playlists/Show.aspx?search=" + this.SearchTextBox?.Text + "&filter=" + this.ddlCategory.SelectedValue + "&cat=" + this.ddlCategory.SelectedIndex);
         }
     }
 }
