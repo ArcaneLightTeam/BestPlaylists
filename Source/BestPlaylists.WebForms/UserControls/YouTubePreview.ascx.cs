@@ -6,7 +6,7 @@
     public partial class YouTubePreview : UserControl
     {
         private Side side;
-
+        private string eventName;
         private string assoctiatedControlId;
 
         public string AssociatedControlId
@@ -18,6 +18,21 @@
             set
             {
                 this.assoctiatedControlId = value;
+            }
+        }
+
+        /// <summary>
+        /// Without "on" prefix
+        /// </summary>
+        public string EventName
+        {
+            get
+            {
+                return eventName;
+            }
+            set
+            {
+                eventName = value;
             }
         }
 
@@ -38,7 +53,7 @@
             this.updatePanelVideo.Triggers.Add(new AsyncPostBackTrigger()
             {
                 ControlID = this.AssociatedControlId,
-                EventName = "TextChanged"
+                EventName = this.EventName
             });
 
             // find control with id: "this.AssociatedControlId" and set post-back to true: tbUrlInput.AutoPostBack = true;
@@ -49,7 +64,13 @@
             this.videoFramePreview.Visible = false;
         }
 
-        public void TbUrlInput_TextChanged(object sender, EventArgs e)
+        public void HideVideo()
+        {
+            this.videoFramePreview.Visible = false;
+            this.updatePanelVideo.Update();
+        }
+
+        public void PreviewVideoWithSlider(object sender, EventArgs e)
         {
             TextBox tbUrlInput = sender as TextBox;
             if (!tbUrlInput.Text.Contains("https://www.youtube.com/watch?v="))

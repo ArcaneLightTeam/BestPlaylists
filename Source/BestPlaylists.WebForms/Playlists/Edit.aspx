@@ -94,6 +94,10 @@
                     </label>
                 </div>
                 <div class="pt-20">
+                    <asp:Button runat="server" ID="deletePlaylist"
+                        Text="Delete"
+                        CssClass="btn btn-danger"
+                        OnClick="DeletePlaylist_Click" />
                     <asp:Button ID="btnAddPlaylist" runat="server"
                         Text="Update"
                         OnClick="BtnUpdatePlaylist_Click"
@@ -105,12 +109,11 @@
                 <h3 class="text-primary">Videos
                     <span id="videoCount" runat="server" class="badge badge-primary"></span>
                 </h3>
-                <div class="row panel panel-primary"
-                    style="height: 500px; overflow-y: scroll;">
+                <div class="row panel panel-primary videos-container">
                     <asp:Repeater ItemType="BestPlaylists.Data.Models.Video" ID="videosRepeater" runat="server">
                         <ItemTemplate>
-                            <div>
-                                <iframe width="190" height="90"
+                            <div class="row">
+                                <iframe width="190" height="90" class="pull-left"
                                     src=' <%#"https://www.youtube.com/embed/" + Item.Url.Substring(Item.Url.IndexOf("=") + 1) %>'>s
                                 </iframe>
                                 <asp:Button runat="server"
@@ -119,9 +122,7 @@
                                     CommandArgument="<%# Item.Id %>"
                                     Title="Video will be deleted"
                                     OnCommand="DeleteVideo_Command"
-                                    CssClass="btn btn-danger"
-                                    style="position: absolute" />
-                                <hr />
+                                    CssClass="btn btn-danger pull-left" />
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -131,15 +132,29 @@
                 <div>
                     <div class="form-group">
                         <label class="label-control" for="tbAddVideo">Add video</label>
-                        <youtube:VideoPreview runat="server" Distance="300" ID="yt" Side="Top" AssociatedControlId="tbAddVideo"/>
+                        <youtube:VideoPreview runat="server" ID="ytPreview"
+                            Side="Left"
+                            EventName="Click"
+                            AssociatedControlId="btnPreview" />
+                            <asp:UpdatePanel ID="updateButtonText" UpdateMode="Conditional" runat="server">
+                                <Triggers>
+                                    <asp:PostBackTrigger ControlID="btnAddVideo"  />
+                                </Triggers>
+                                <ContentTemplate>
                         <div class="input-group">
-                            <asp:TextBox ID="tbAddVideo" AutoPostBack="True" runat="server"
+                            <asp:TextBox ID="tbAddVideo" runat="server"
                                 Placeholder="https://www.youtube.com/watch?v=Ebbkkfp-YBk"
                                 CssClass="form-control search-query"
-                                Width="300" OnTextChanged="tbAddVideo_TextChanged" />
-                            <span class="input-group-btn">
-                                <asp:Button Text="Add" CssClass="btn btn-success" runat="server" OnClick="AddVideo_Click" />
-                            </span>
+                                Width="300" />
+                                    <span class="input-group-btn">
+                                        <asp:Button Text="Add" ID="btnAddVideo" CssClass="btn btn-success" runat="server" OnClick="AddVideo_Click" />
+                                        <asp:Button Text="Preview" ID="btnPreview" runat="server"
+                                            Title="Preview your link"
+                                            OnClick="PreviewVideo_Click"
+                                            CssClass="btn btn-default" />
+                                    </span>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
 
                         <asp:RegularExpressionValidator ID="revYouTubeUrl"
@@ -152,15 +167,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-md-offset-5">
-                <asp:Button runat="server" ID="deletePlaylist"
-                    Text="Delete"
-                    CssClass="btn btn-block btn-danger"
-                    OnClick="DeletePlaylist_Click" />
-            </div>
-        </div>
-
     </asp:Panel>
 </asp:Content>

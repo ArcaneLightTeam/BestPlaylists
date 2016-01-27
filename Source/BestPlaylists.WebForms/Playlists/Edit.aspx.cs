@@ -15,6 +15,8 @@
     public partial class Edit : Page
     {
         private const string Id = "id";
+        private const string Preview = "Preview";
+        private const string Hide = "Hide";
 
         [Inject]
         public IPlaylistService PlaylistsService { get; set; }
@@ -119,7 +121,7 @@
             {
                 PlaylistId = playlistDetails.Id,
                 Url = this.tbAddVideo.Text,
-                UserId = this.User.Identity.GetUserId()  
+                UserId = this.User.Identity.GetUserId()
             };
 
             playlistDetails.Videos.Add(videoToAdd);
@@ -132,10 +134,26 @@
             this.videoCount.InnerText = playlistDetails.Videos.Count.ToString();
         }
 
-        protected void tbAddVideo_TextChanged(object sender, EventArgs e)
+        protected void PreviewVideo_Click(object sender, EventArgs e)
         {
-            YouTubePreview myControl = this.editPlaylistPanel.FindControl("yt") as YouTubePreview;
-            myControl.TbUrlInput_TextChanged(sender, e);
+            YouTubePreview myControl = this.editPlaylistPanel.FindControl("ytPreview") as YouTubePreview;
+            if (string.IsNullOrWhiteSpace(this.tbAddVideo.Text))
+            {
+                return;
+            }
+
+            if (this.btnPreview.Text== Preview)
+            {
+                myControl.PreviewVideoWithSlider(this.tbAddVideo, e);
+                this.btnPreview.Text = Hide;
+            }
+            else
+            {
+                myControl.HideVideo();
+                this.btnPreview.Text = Preview;
+            }
+
+            this.updateButtonText.Update();
         }
     }
 }
