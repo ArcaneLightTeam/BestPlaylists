@@ -20,7 +20,7 @@
 
         public Playlist GetById(int id)
         {
-            return this.playlistRepo.All().FirstOrDefault(pr => pr.Id == id);
+            return this.playlistRepo.All().FirstOrDefault(pr => pr.Id == id && (!pr.IsRemoved));
         }
 
         public IQueryable<Playlist> GetByCategory(string categoryName)
