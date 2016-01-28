@@ -48,14 +48,14 @@ Your Web application should use the following technologies, frameworks and devel
 * :white_check_mark: Use the standard ASP.NET Web Forms controls (from `System.Web.UI`) 
 	* External UI controls from Telerik / Infragistics / DevExpress / etc. are **not** allowed!
 * :white_check_mark: Use `UpdatePanel`s and **AJAX** where applicable to avoid full postbacks  [Register](./Source/BestPlaylists.WebForms/Account/Register.aspx#L16), [YourPlaylists](./Source/BestPlaylists.WebForms/Account/YourPlaylist.aspx), [EditPlaylist](./Source/BestPlaylists.WebForms/Playlists/Edit.aspx#L141), [YouTubePreview](./Source/BestPlaylists.WebForms/UserControls/YouTubePreview.ascx)
-* Use at least **three ASCX user controls** that encapsulate some functionality  [YouTubePreview](./Source/BestPlaylists.WebForms/UserControls/YouTubePreview.ascx),
+* :white_check_mark: Use at least **three ASCX user controls** that encapsulate some functionality  [Controls](./Source/BestPlaylists.WebForms/UserControls/),
 * :white_check_mark: Use at least one **file upload** form to send files at the server side (e.g. profile photos for your users) [EditProfile](./Source/BestPlaylists.WebForms/Account/EditProfile.aspx#L108)
 * :white_check_mark: Use **caching** of data where it makes sense (e.g. starting page)  [Home](./Source/BestPlaylists.WebForms/Default.aspx.cs#L32) - 10 mins
 * :white_check_mark: Apply **error handling** and data validation to avoid crashes when invalid data is entered  [WebConfig](./Source/BestPlaylists.WebForms/Web.config#L95)
 * :white_check_mark: Prevent yourself from **security** holes (XSS, XSRF, Parameter Tampering, etc.)  [Literals](./Source/BestPlaylists.WebForms/Account/Manage.aspx#L107) (Mode="Encode"), [Server.HtmlEncode](./Source/BestPlaylists.WebForms/Playlists/Edit.aspx.cs#L54)(), [`<%#: %>`](./Source/BestPlaylists.WebForms/Playlists/Details.aspx), [Validation](./Source/BestPlaylists.WebForms/Playlists/Create.aspx)
 	* Handle correctly the **special HTML characters** and tags like `<script>`, `<br />`, etc.`
 * Use GitHub and take advantage of the **branches** for team collaboration. [Grapf](https://github.com/ArcaneLightTeam/BestPlaylists/network), [Branches](https://github.com/ArcaneLightTeam/BestPlaylists/branches)
-* Brief **documentation** of the project and project architecture (as `.md` file)
+* :white_check_mark: Brief **documentation** of the project and project architecture (as `.md` file) [ReadMe.md](./README.md)
 
 ### Optional Requirements
 
