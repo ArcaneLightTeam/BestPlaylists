@@ -58,22 +58,13 @@ namespace BestPlaylists.WebForms.Playlists {
         protected global::System.Web.UI.WebControls.Repeater repeaterVideos;
         
         /// <summary>
-        /// plRating control.
+        /// RatingControlPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl plRating;
-        
-        /// <summary>
-        /// Rating control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Rating;
+        protected global::BestPlaylists.WebForms.UserControls.RatingControl.RatingControl RatingControlPanel1;
         
         /// <summary>
         /// commentsCount control.

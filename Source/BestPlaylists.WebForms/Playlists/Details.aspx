@@ -6,6 +6,9 @@
     Title="Details"
     ValidateRequest="false" %>
 
+<%@ Register Src="~/UserControls/RatingControl/RatingControl.ascx" TagPrefix="userControls" TagName="RatingControl" %>
+
+
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div class="row">
         <h1 class="title">Playlist details:</h1>
@@ -41,18 +44,7 @@
             </asp:Repeater>
         </div>
         <div class="col-md-6">
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <h2>Rating: <strong runat="server" id="plRating"></strong></h2>
-                    <asp:DropDownList runat="server" ID="Rating"
-                        OnSelectedIndexChanged="Rating_OnSelectedIndexChanged"
-                        AutoPostBack="True"
-                        AppendDataBoundItems="True"
-                        CssClass="form-control"
-                        DataTextField="Name"
-                        DataValueField="Value" />
-                </ContentTemplate>
-            </asp:UpdatePanel>
+            <userControls:RatingControl ID="RatingControlPanel1" OnRate="RatingControlPanel1_OnRate" runat="server" CanRate="<%#this.CanRate %>" UserId="<%#this.GetUserId()%>" DataId="<%#this.GetDataId() %>"></userControls:RatingControl>
         </div>
     </div>
     <div class="row">

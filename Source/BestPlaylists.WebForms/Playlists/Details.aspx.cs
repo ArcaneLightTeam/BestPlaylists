@@ -10,12 +10,16 @@ using Ninject;
 
 namespace BestPlaylists.WebForms.Playlists
 {
+    using BestPlaylists.WebForms.UserControls.RatingControl;
+
     using Error_Handler_Control;
 
     public partial class Details : Page
     {
         [Inject]
         public IPlaylistService Playlists { get; set; }
+
+        public bool CanRate { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,71 +33,20 @@ namespace BestPlaylists.WebForms.Playlists
                 this.plDescription.InnerText = this.Server.HtmlDecode(playlist.Description);
                 this.repeaterVideos.DataSource = this.GetUrlsFromVideo(playlist.Videos); //playlist.Videos;
                 this.videoCount.InnerText = playlist.Videos.Count().ToString();
-                this.plRating.InnerText = playlist.CurrentRating.ToString("F2");
+                this.RatingControlPanel1.CurrentRating = playlist.CurrentRating.ToString("F2");
 
                 this.commentsCount.InnerText = playlist.Comments.Count().ToString();
                 this.postComment.Visible = this.IsUserLogged();
                 this.plComments.DataSource = playlist.Comments;
 
-                var userId = this.User.Identity.GetUserId();
-                if (userId != null && playlist.Ratings.All(u => u.UserId != userId))
-                {
-                    object[] arrayOfRating =
-                        {
-                            new {Name = "Select rating", Value = "0"},
-                            new {Name = "1", Value = "1"},
-                            new {Name = "2", Value = "2"},
-                            new {Name = "3", Value = "3"},
-                            new {Name = "4", Value = "4"},
-                            new {Name = "5", Value = "5"},
-                        };
-                    this.Rating.DataSource = arrayOfRating;
-                }
-                else
-                {
-                    this.Rating.Visible = false;
-                }
-
-                if (playlist.UserId != userId)
+                this.CanRate = playlist.Ratings.All(u => u.UserId != this.GetUserId());
+                
+                if (playlist.UserId != this.GetUserId())
                 {
                     this.btnEdit.Visible = false;
                 }
 
                 this.DataBind();
-            }
-        }
-
-        protected void Rating_OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-            var dropDown = sender as DropDownList;
-
-            if (dropDown != null)
-            {
-                var rate = int.Parse(dropDown.SelectedValue);
-
-                var id = 0;
-                if (int.TryParse(this.Context.Request.QueryString["Id"], out id))
-                {
-                    var playlist = this.Playlists.GetById(id);
-                    var rating = new Rating()
-                    {
-                        PlaylistId = id,
-                        UserId = this.GetUserId(),
-                        Value = rate
-                    };
-
-                    playlist.Ratings.Add(rating);
-
-                    playlist.CurrentRating = playlist.Ratings.Average(r => r.Value);
-
-                    this.Playlists.Update(playlist);
-
-                    this.Rating.Visible = false;
-
-                    this.plRating.InnerText = playlist.CurrentRating.ToString("F2");
-
-                    ErrorSuccessNotifier.AddSuccessMessage("Playlist rated successfully!");
-                }
             }
         }
 
@@ -162,9 +115,45 @@ namespace BestPlaylists.WebForms.Playlists
             return this.User.Identity.IsAuthenticated;
         }
 
-        private string GetUserId()
+        protected string GetUserId()
         {
             return this.User.Identity.GetUserId();
+        }
+        
+        protected int GetDataId()
+        {
+            var id = 0;
+            if (int.TryParse(this.Context.Request.QueryString["Id"], out id))
+            {
+                return id;
+            }
+
+            return 0;
+        }
+
+        protected void RatingControlPanel1_OnRate(object sender, RatingEventArgs e)
+        {
+
+            var playlistId = e.DataId;
+            var rate = e.RatingValue;
+
+            var playlist = this.Playlists.GetById(playlistId);
+            var rating = new Rating()
+            {
+                PlaylistId = playlistId,
+                UserId = this.GetUserId(),
+                Value = rate
+            };
+
+            playlist.Ratings.Add(rating);
+
+            playlist.CurrentRating = playlist.Ratings.Average(r => r.Value);
+
+            this.Playlists.Update(playlist);
+
+            this.RatingControlPanel1.CurrentRating = playlist.CurrentRating.ToString("F2");
+
+            ErrorSuccessNotifier.AddSuccessMessage("Playlist rated successfully!");
         }
     }
 }

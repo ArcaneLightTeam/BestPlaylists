@@ -267,6 +267,7 @@
     <Content Include="UserControls\ErrorSuccessNotifier\Scripts\ErrorSuccessNotifier.js" />
     <Content Include="UserControls\ErrorSuccessNotifier\Scripts\jquery-1.3.2.js" />
     <Content Include="UserControls\ErrorSuccessNotifier\Styles\ErrorSuccessNotifier.css" />
+    <Content Include="UserControls\RatingControl\RatingControl.ascx" />
     <Content Include="UserControls\YouTubePreview.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -512,6 +513,12 @@
     </Compile>
     <Compile Include="UserControls\ErrorSuccessNotifier\ErrorSuccessNotifier.ascx.designer.cs">
       <DependentUpon>ErrorSuccessNotifier.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RatingControl\RatingControl.ascx.cs">
+      <DependentUpon>RatingControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RatingControl\RatingControl.ascx.designer.cs">
+      <DependentUpon>RatingControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Side.cs" />
     <Compile Include="UserControls\YouTubePreview.ascx.cs">
