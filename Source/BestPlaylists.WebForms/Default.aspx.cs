@@ -23,8 +23,8 @@
                 return;
             }
 
-            IList<Data.Models.Playlist> topPlaylists =
-                Playlists.GetAll()
+            IList<Data.Models.Playlist> topPlaylists = this.Playlists.GetAll()
+                .Where(p => !p.IsPrivate)
                 .OrderByDescending(p => p.CurrentRating)
                 .Take(SiteConstants.HomePlaylistsSize)
                 .ToList();
