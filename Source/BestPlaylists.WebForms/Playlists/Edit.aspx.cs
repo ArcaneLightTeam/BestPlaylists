@@ -9,6 +9,9 @@
 
     using BestPlaylists.Data.Models;
     using BestPlaylists.Services.Data.Contracts;
+
+    using Error_Handler_Control;
+
     using Microsoft.AspNet.Identity;
     using Ninject;
     using UserControls;
@@ -79,6 +82,10 @@
             playlistDetails.CategoryId = categoryId;
             playlistDetails.IsPrivate = this.cbPrivate.Checked;
             this.PlaylistsService.Update(playlistDetails);
+
+            ErrorSuccessNotifier.AddSuccessMessage("Playlist updated successfully!");
+            ErrorSuccessNotifier.ShowAfterRedirect = true;
+
             this.Response.Redirect("/Playlists/Details?id=" + playlistDetails.Id);
         }
 
@@ -101,6 +108,7 @@
             this.videosRepeater.DataBind();
 
             this.videoCount.InnerText = playlistDetails.Videos.Count.ToString();
+            ErrorSuccessNotifier.AddSuccessMessage("Video deleted successfully!");
         }
 
         protected void DeletePlaylist_Click(object sender, EventArgs e)
@@ -109,6 +117,10 @@
             Playlist playlistDetails = this.PlaylistsService.GetById(int.Parse(queryParamId));
             playlistDetails.IsRemoved = true;
             this.PlaylistsService.Update(playlistDetails);
+
+            ErrorSuccessNotifier.AddSuccessMessage("Playlist deleted successfully!");
+            ErrorSuccessNotifier.ShowAfterRedirect = true;
+
             this.Response.Redirect("/Account/YourPlaylists");
         }
 
@@ -132,6 +144,8 @@
             this.videosRepeater.DataBind();
 
             this.videoCount.InnerText = playlistDetails.Videos.Count.ToString();
+
+            ErrorSuccessNotifier.AddSuccessMessage("Video successfully added to playlist!");
         }
 
         protected void PreviewVideo_Click(object sender, EventArgs e)
@@ -142,7 +156,7 @@
                 return;
             }
 
-            if (this.btnPreview.Text== Preview)
+            if (this.btnPreview.Text == Preview)
             {
                 myControl.PreviewVideoWithSlider(this.tbAddVideo, e);
                 this.btnPreview.Text = Hide;

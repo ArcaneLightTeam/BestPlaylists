@@ -10,6 +10,8 @@ using Ninject;
 
 namespace BestPlaylists.WebForms.Playlists
 {
+    using Error_Handler_Control;
+
     public partial class Details : Page
     {
         [Inject]
@@ -83,12 +85,14 @@ namespace BestPlaylists.WebForms.Playlists
                     playlist.Ratings.Add(rating);
 
                     playlist.CurrentRating = playlist.Ratings.Average(r => r.Value);
-                    
+
                     this.Playlists.Update(playlist);
 
                     this.Rating.Visible = false;
 
                     this.plRating.InnerText = playlist.CurrentRating.ToString("F2");
+
+                    ErrorSuccessNotifier.AddSuccessMessage("Playlist rated successfully!");
                 }
             }
         }
@@ -125,6 +129,9 @@ namespace BestPlaylists.WebForms.Playlists
 
             playlist.Comments.Add(comment);
             this.Playlists.Update(playlist);
+
+            ErrorSuccessNotifier.AddSuccessMessage("Comment added successfully!");
+            ErrorSuccessNotifier.ShowAfterRedirect = true;
 
             Response.Redirect("~/Playlists/Details?Id=" + id);
         }

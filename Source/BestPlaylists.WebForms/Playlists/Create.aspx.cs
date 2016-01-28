@@ -9,6 +9,8 @@ using Ninject;
 
 namespace BestPlaylists.WebForms.Playlists
 {
+    using Error_Handler_Control;
+
     public partial class Create : Page
     {
         [Inject]
@@ -41,6 +43,8 @@ namespace BestPlaylists.WebForms.Playlists
             playlist.Videos = videos;
 
             this.Playlists.Update(playlist);
+            ErrorSuccessNotifier.AddSuccessMessage("Playlist created successfully!");
+            ErrorSuccessNotifier.ShowAfterRedirect = true;
 
             Response.Redirect("~/Playlists/Show.aspx");
         }

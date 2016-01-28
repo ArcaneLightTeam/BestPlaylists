@@ -22,6 +22,15 @@ namespace BestPlaylists.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor admin;
         
         /// <summary>
+        /// ErrorSuccessNotifier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Error_Handler_Control.ErrorSuccessNotifier ErrorSuccessNotifier;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

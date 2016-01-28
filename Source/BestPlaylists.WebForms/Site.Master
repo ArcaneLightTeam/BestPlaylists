@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BestPlaylists.WebForms.SiteMaster" %>
 
+<%@ Register Src="~/UserControls/ErrorSuccessNotifier/ErrorSuccessNotifier.ascx"
+    TagName="ErrorSuccessNotifier" TagPrefix="userControls" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -77,6 +79,7 @@
             </div>
         </div>
         <div class="container body-content">
+            <userControls:ErrorSuccessNotifier ID="ErrorSuccessNotifier" runat="server" />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

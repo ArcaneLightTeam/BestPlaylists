@@ -259,6 +259,14 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="UnauthorizedAccess.aspx" />
+    <Content Include="UserControls\ErrorSuccessNotifier\ErrorSuccessNotifier.ascx" />
+    <Content Include="UserControls\ErrorSuccessNotifier\Images\error-icon.png" />
+    <Content Include="UserControls\ErrorSuccessNotifier\Images\info-icon.png" />
+    <Content Include="UserControls\ErrorSuccessNotifier\Images\success-icon.png" />
+    <Content Include="UserControls\ErrorSuccessNotifier\Images\warning-icon.png" />
+    <Content Include="UserControls\ErrorSuccessNotifier\Scripts\ErrorSuccessNotifier.js" />
+    <Content Include="UserControls\ErrorSuccessNotifier\Scripts\jquery-1.3.2.js" />
+    <Content Include="UserControls\ErrorSuccessNotifier\Styles\ErrorSuccessNotifier.css" />
     <Content Include="UserControls\YouTubePreview.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -498,6 +506,12 @@
     </Compile>
     <Compile Include="UnauthorizedAccess.aspx.designer.cs">
       <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ErrorSuccessNotifier\ErrorSuccessNotifier.ascx.cs">
+      <DependentUpon>ErrorSuccessNotifier.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ErrorSuccessNotifier\ErrorSuccessNotifier.ascx.designer.cs">
+      <DependentUpon>ErrorSuccessNotifier.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Side.cs" />
     <Compile Include="UserControls\YouTubePreview.ascx.cs">
