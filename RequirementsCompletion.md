@@ -30,31 +30,31 @@ This area could hold for example the user's profiles management functionality, t
 
 Your Web application should use the following technologies, frameworks and development techniques:
 
-* Use **ASP.NET Web Forms** and **Visual Studio 2015**
-* Your UI should use **server-side Web Forms** UI rendering (ASPX pages and ASCX controls)
+* Use **ASP.NET Web Forms** and **Visual Studio 2015**  :white_check_mark:
+* Your UI should use **server-side Web Forms** UI rendering (ASPX pages and ASCX controls) :white_check_mark:
 	* ASP.NET MVC and JavaScript UI controls are **not** allowed!
-* Use **MS SQL Server** as database back-end
+* Use **MS SQL Server** as database back-end :white_check_mark:
 	* Use Entity Framework to access your database [Data](./Source/Data/)
-* Use **data-binding** technique by choice
+* Use **data-binding** technique by choice :white_check_mark:
 	* You are free to use data-source controls (like `EntityDataSource` and `ObjectDataSource`), model binding or manual binding in the C# code behind pages.
-* Use at least **four data grids** (table-like data UI components) with **server-side paging and sorting** [Home](Home), [Playlists](Playlist/Show), [Users](Admin/Users), [Categories](Categories), [YourPlaylists](Account/YourPlaylists)
-* Create **beautiful and responsive UI**
-	* You may use **Bootstrap** or **Materialize** [Bootstrap](Bootstrap)
+* Use at least **four data grids** (table-like data UI components) with **server-side paging and sorting** :white_check_mark: [Home](./Source/BestPlaylists.WebForms/Default.aspx), [Playlists](./Source/BestPlaylists.WebForms/Playlists/Show.aspx), [Users](./Source/BestPlaylists.WebForms/Admin/Users.aspx), [Categories](./Source/BestPlaylists.WebForms/Admin/Categories.aspx), [YourPlaylists](./Source/BestPlaylists.WebForms/Account/YourPlaylists.aspx)
+* Create **beautiful and responsive UI** :white_check_mark:
+	* You may use **Bootstrap** or **Materialize** [Bootstrap](./Source/BestPlaylists.WebForms/Content/)
 	* You may change the standard theme and modify it to apply own web design and visual styles
-* Use a **Master page** to define the common UI for the public, private and administrative parts [MasterPage](MasterPage)
-* Use **Sitemap** and navigational UI controls to implement site navigation
-* Use the standard **ASP.NET Identity System** for managing **users** and **roles**
+* Use a **Master page** to define the common UI for the public, private and administrative parts :white_check_mark: [MasterPage](./Source/BestPlaylists.WebForms/Site.Master)
+* Use **Sitemap** and navigational UI controls to implement site navigation :white_check_mark: [Sitemap](./Source/BestPlaylists.WebForms/Web.sitemap)
+* Use the standard **ASP.NET Identity System** for managing **users** and **roles** :white_check_mark:
 	* Your registered users should have are least two roles: **user** and **administrator**
-* Use the standard ASP.NET Web Forms controls (from `System.Web.UI`)
+* Use the standard ASP.NET Web Forms controls (from `System.Web.UI`) :white_check_mark:
 	* External UI controls from Telerik / Infragistics / DevExpress / etc. are **not** allowed!
-* Use `UpdatePanel`s and **AJAX** where applicable to avoid full postbacks [Register](Register), [YourPlaylist](YourPlaylist), [EditPlaylist](EditPlaylist), [categories](AdminCategoris)
-* Use at least **three ASCX user controls** that encapsulate some functionality [EditPlaylist](Register)
-* Use at least one **file upload** form to send files at the server side (e.g. profile photos for your users) [EditProfile](Account/EditProfile)
-* Use **caching** of data where it makes sense (e.g. starting page) [Home](Homepage) - 10 mins
-* Apply **error handling** and data validation to avoid crashes when invalid data is entered [WebConfog](webconfig)
-* Prevent yourself from **security** holes (XSS, XSRF, Parameter Tampering, etc.) [Literals](someurl) (Mode="Encode"), [Server.HtmlEncode](url)(), `<%#: %>` , [Validation](validations)
+* Use `UpdatePanel`s and **AJAX** where applicable to avoid full postbacks :white_check_mark: [Register](./Source/BestPlaylists.WebForms/Account/Register.aspx#L16), [YourPlaylists](./Source/BestPlaylists.WebForms/Account/YourPlaylist.aspx), [EditPlaylist](./Source/BestPlaylists.WebForms/Playlists/Edit.aspx#L141), [YouTubePreview](./Source/BestPlaylists.WebForms/UserControls/YouTubePreview.ascx)
+* Use at least **three ASCX user controls** that encapsulate some functionality  [YouTubePreview](./Source/BestPlaylists.WebForms/UserControls/YouTubePreview.ascx),
+* Use at least one **file upload** form to send files at the server side (e.g. profile photos for your users) :white_check_mark: [EditProfile](./Source/BestPlaylists.WebForms/Account/EditProfile.aspx#L108)
+* Use **caching** of data where it makes sense (e.g. starting page) :white_check_mark: [Home](./Source/BestPlaylists.WebForms/Default.aspx.cs#L32) - 10 mins
+* Apply **error handling** and data validation to avoid crashes when invalid data is entered :white_check_mark: [WebConfig](./Source/BestPlaylists.WebForms/Web.config#L95)
+* Prevent yourself from **security** holes (XSS, XSRF, Parameter Tampering, etc.) :white_check_mark: [Literals](./Source/BestPlaylists.WebForms/Account/Manage.aspx#L107) (Mode="Encode"), [Server.HtmlEncode](./Source/BestPlaylists.WebForms/Playlists/Edit.aspx.cs#L54)(), [`<%#: %>`](./Source/BestPlaylists.WebForms/Playlists/Details.aspx), [Validation](./Source/BestPlaylists.WebForms/Playlists/Create.aspx)
 	* Handle correctly the **special HTML characters** and tags like `<script>`, `<br />`, etc.`
-* Use GitHub and take advantage of the **branches** for team collaboration. [Grapf](link)
+* Use GitHub and take advantage of the **branches** for team collaboration. [Grapf](https://github.com/ArcaneLightTeam/BestPlaylists/network), [Branches](https://github.com/ArcaneLightTeam/BestPlaylists/branches)
 * Brief **documentation** of the project and project architecture (as `.md` file)
 
 ### Optional Requirements
